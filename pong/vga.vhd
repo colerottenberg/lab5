@@ -177,6 +177,31 @@ begin
         end if;
     end process paddle1_move;
 
+    -- Paddle 2 movement
+    paddle2_move: process(slow_clk, rst)
+        variable temp_y_pos_p2: integer;
+        variable temp_x_pos_p2: integer;
+    begin
+        temp_y_pos_p2 := y_pos_p2;
+        temp_x_pos_p2 := x_pos_p2;
+        if rising_edge(slow_clk) then
+            if rst = '1' then
+                y_pos_p2 <= 200;
+                x_pos_p2 <= 638 - PADDLE_WIDTH;
+            else
+                if switch(2) = '1' and y_pos_p2 - PADDLE_SPEED >= PADDLE_MIN then
+                    y_pos_p2 <= y_pos_p2 - PADDLE_SPEED;
+                    temp_y_pos_p2 := y_pos_p2 - PADDLE_SPEED;
+                elsif switch(3) = '1' and y_pos_p2 + PADDLE_SPEED <= PADDLE_MAX then
+                    y_pos_p2 <= y_pos_p2 + PADDLE_SPEED;
+                    temp_y_pos_p2 := y_pos_p2 + PADDLE_SPEED;
+                end if;
+                y_pos_p2 <= temp_y_pos_p2;
+                x_pos_p2 <= temp_x_pos_p2;
+            end if;
+        end if;
+    end process paddle2_move;
+
 	draw: process(clk, rst)
 	begin
 		if rising_edge(clk) then
