@@ -73,15 +73,28 @@ architecture default_arch of vga is
     signal slow_clk : std_logic := '0'; -- Slow clock
     -- Internal Temp signals
     signal temp_h_sync, temp_v_sync, temp_video_on : std_logic;
-		-- x and y coordinates of OBJ
-		signal x_pos, y_pos : integer := 200; -- 200 is the center of the screen
-		signal mov_x, mov_y : integer := 1;
-		-- Constants
-		constant speed : integer := 2;
-		constant size : integer := 64;
-		constant X_MAX : integer := 638;
-		constant Y_MAX : integer := 478;
-		signal v_on : std_logic := '0';
+		-- x and y coordinates of ball
+    signal x_pos, y_pos : integer := 200; -- 200 is the center of the screen
+    signal mov_x, mov_y : integer := 1;
+    -- Constants of the ball
+    constant speed : integer := 2;
+    constant size : integer := 64;
+    constant X_MAX : integer := 638;
+    constant Y_MAX : integer := 478;
+    -- Constants for the paddles
+    constant PADDLE_WIDTH : integer := 10;
+    constant PADDLE_HEIGHT : integer := 50;
+    constant PADDLE_SPEED : integer := 2;
+    constant PADDLE_MAX : integer := 428;
+    constant PADDLE_MIN : integer := 0;
+    -- x and y coordinates for each paddle, one on the left and one on the right
+    -- Paddle 1 is on the left, Paddle 2 is on the right
+    signal x_pos_p1 : integer := 0;
+    signal y_pos_p1 : integer := 200;
+    signal x_pos_p2 : integer := 638 - PADDLE_WIDTH;
+    signal y_pos_p2 : integer := 200;
+
+    signal v_on : std_logic := '0';
 
 begin 		
 	-- Slow Clock Divider splits the 50MHz clock into 1Hz
@@ -108,7 +121,7 @@ begin
    -- VGA_SYNC_GEN ENDS	
 
    -- The object moves around the screen and will bounce off the edges
-   obj_move: process(slow_clk, rst)
+   ball_move: process(slow_clk, rst)
 	 	-- Assigning temp variables to movement and position variables
 		variable temp_mov_x: integer;
 		variable temp_mov_y: integer;
@@ -134,19 +147,58 @@ begin
                 y_pos <= y_pos + (temp_mov_y * speed);
             end if;
         end if;
-    end process obj_move;
-            
+    end process ball_move;
+
+
+    -- Paddle 1 movement
+    -- Paddle 1 is dependent on the switches to move up and down
+    -- Switches 0 and 1 are used to move the paddle up and down
+    paddle1_move: process(slow_clk, rst)
+        variable temp_y_pos_p1: integer;
+        variable temp_x_pos_p1: integer;
+    begin
+        temp_y_pos_p1 := y_pos_p1;
+        temp_x_pos_p1 := x_pos_p1;
+        if rising_edge(slow_clk) then
+            if rst = '1' then
+                y_pos_p1 <= 200;
+                x_pos_p1 <= 0;
+            else
+                if switch(0) = '1' and y_pos_p1 - PADDLE_SPEED >= PADDLE_MIN then
+                    y_pos_p1 <= y_pos_p1 - PADDLE_SPEED;
+                    temp_y_pos_p1 := y_pos_p1 - PADDLE_SPEED;
+                elsif switch(1) = '1' and y_pos_p1 + PADDLE_SPEED <= PADDLE_MAX then
+                    y_pos_p1 <= y_pos_p1 + PADDLE_SPEED;
+                    temp_y_pos_p1 := y_pos_p1 + PADDLE_SPEED;
+                end if;
+                y_pos_p1 <= temp_y_pos_p1;
+                x_pos_p1 <= temp_x_pos_p1;
+            end if;
+        end if;
+    end process paddle1_move;
 
 	draw: process(clk, rst)
 	begin
 		if rising_edge(clk) then
 			if rst = '0' then
 				if unsigned(h_count) >= to_unsigned(x_pos, h_count'length) and unsigned(h_count) <= to_unsigned(x_pos + size, h_count'length) and
-        unsigned(v_count) >= to_unsigned(y_pos, v_count'length) and unsigned(v_count) <= to_unsigned(y_pos + size, v_count'length) and
-        temp_video_on = '1' then  
+                unsigned(v_count) >= to_unsigned(y_pos, v_count'length) and unsigned(v_count) <= to_unsigned(y_pos + size, v_count'length) and
+                temp_video_on = '1' then  
 					red <= "0111";
 					green <= "0011";
 					blue <= "1011";
+                elsif unsigned(h_count) >= to_unsigned(x_pos_p1, h_count'length) and unsigned(h_count) <= to_unsigned(x_pos_p1 + PADDLE_WIDTH, h_count'length) and
+                unsigned(v_count) >= to_unsigned(y_pos_p1, v_count'length) and unsigned(v_count) <= to_unsigned(y_pos_p1 + PADDLE_HEIGHT, v_count'length) and
+                temp_video_on = '1' then
+                    red <= "1111";
+                    green <= "1111";
+                    blue <= "1111";
+                elsif unsigned(h_count) >= to_unsigned(x_pos_p2, h_count'length) and unsigned(h_count) <= to_unsigned(x_pos_p2 + PADDLE_WIDTH, h_count'length) and
+                unsigned(v_count) >= to_unsigned(y_pos_p2, v_count'length) and unsigned(v_count) <= to_unsigned(y_pos_p2 + PADDLE_HEIGHT, v_count'length) and
+                temp_video_on = '1' then
+                    red <= "1111";
+                    green <= "1111";
+                    blue <= "1111";
 				else
 					red <= "0000";
 					green <= "0000";

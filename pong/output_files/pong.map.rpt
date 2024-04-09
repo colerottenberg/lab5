@@ -1,5 +1,5 @@
 Analysis & Synthesis report for pong
-Tue Apr  9 15:50:21 2024
+Tue Apr  9 16:46:31 2024
 Quartus Prime Version 22.1std.0 Build 915 10/25/2022 SC Lite Edition
 
 
@@ -55,15 +55,15 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Apr  9 15:50:21 2024          ;
+; Analysis & Synthesis Status        ; Successful - Tue Apr  9 16:46:31 2024          ;
 ; Quartus Prime Version              ; 22.1std.0 Build 915 10/25/2022 SC Lite Edition ;
 ; Revision Name                      ; pong                                           ;
 ; Top-level Entity Name              ; top_level                                      ;
 ; Family                             ; MAX 10                                         ;
-; Total logic elements               ; 354                                            ;
-;     Total combinational functions  ; 347                                            ;
-;     Dedicated logic registers      ; 115                                            ;
-; Total registers                    ; 115                                            ;
+; Total logic elements               ; 369                                            ;
+;     Total combinational functions  ; 359                                            ;
+;     Dedicated logic registers      ; 119                                            ;
+; Total registers                    ; 119                                            ;
 ; Total pins                         ; 75                                             ;
 ; Total virtual pins                 ; 0                                              ;
 ; Total memory bits                  ; 0                                              ;
@@ -196,20 +196,20 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-------------------+
 ; Resource                                    ; Usage             ;
 +---------------------------------------------+-------------------+
-; Estimated Total logic elements              ; 354               ;
+; Estimated Total logic elements              ; 369               ;
 ;                                             ;                   ;
-; Total combinational functions               ; 347               ;
+; Total combinational functions               ; 359               ;
 ; Logic element usage by number of LUT inputs ;                   ;
-;     -- 4 input functions                    ; 71                ;
-;     -- 3 input functions                    ; 97                ;
-;     -- <=2 input functions                  ; 179               ;
+;     -- 4 input functions                    ; 80                ;
+;     -- 3 input functions                    ; 99                ;
+;     -- <=2 input functions                  ; 180               ;
 ;                                             ;                   ;
 ; Logic elements by mode                      ;                   ;
-;     -- normal mode                          ; 165               ;
+;     -- normal mode                          ; 177               ;
 ;     -- arithmetic mode                      ; 182               ;
 ;                                             ;                   ;
-; Total registers                             ; 115               ;
-;     -- Dedicated logic registers            ; 115               ;
+; Total registers                             ; 119               ;
+;     -- Dedicated logic registers            ; 119               ;
 ;     -- I/O registers                        ; 0                 ;
 ;                                             ;                   ;
 ; I/O pins                                    ; 75                ;
@@ -217,9 +217,9 @@ https://fpgasoftware.intel.com/eula.
 ; Embedded Multiplier 9-bit elements          ; 0                 ;
 ;                                             ;                   ;
 ; Maximum fan-out node                        ; button_n[0]~input ;
-; Maximum fan-out                             ; 95                ;
-; Total fan-out                               ; 1283              ;
-; Average fan-out                             ; 2.10              ;
+; Maximum fan-out                             ; 99                ;
+; Total fan-out                               ; 1343              ;
+; Average fan-out                             ; 2.14              ;
 +---------------------------------------------+-------------------+
 
 
@@ -228,34 +228,38 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+----------------------------------------+--------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                    ; Entity Name  ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+----------------------------------------+--------------+--------------+
-; |top_level                 ; 347 (0)             ; 115 (0)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 75   ; 0            ; 0          ; |top_level                             ; top_level    ; work         ;
+; |top_level                 ; 359 (0)             ; 119 (0)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 75   ; 0            ; 0          ; |top_level                             ; top_level    ; work         ;
 ;    |clk_div:U_CLK_DIV|     ; 1 (1)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|clk_div:U_CLK_DIV           ; clk_div      ; work         ;
-;    |vga:U_VGA|             ; 346 (264)           ; 114 (72)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA                   ; vga          ; work         ;
+;    |vga:U_VGA|             ; 358 (272)           ; 118 (76)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA                   ; vga          ; work         ;
 ;       |clk_div:clk_div|    ; 36 (36)             ; 22 (22)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|clk_div:clk_div   ; clk_div      ; work         ;
-;       |vga_sync_gen:sync|  ; 46 (46)             ; 20 (20)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|vga_sync_gen:sync ; vga_sync_gen ; work         ;
+;       |vga_sync_gen:sync|  ; 50 (50)             ; 20 (20)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|vga_sync_gen:sync ; vga_sync_gen ; work         ;
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+----------------------------------------+--------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+---------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                              ;
-+----------------------------------------+----------------------------------------+
-; Register name                          ; Reason for Removal                     ;
-+----------------------------------------+----------------------------------------+
-; vga:U_VGA|red[3]                       ; Stuck at GND due to stuck port data_in ;
-; vga:U_VGA|green[2,3]                   ; Stuck at GND due to stuck port data_in ;
-; vga:U_VGA|blue[2]                      ; Stuck at GND due to stuck port data_in ;
-; vga:U_VGA|y_pos[0]                     ; Stuck at GND due to stuck port data_in ;
-; vga:U_VGA|x_pos[0]                     ; Stuck at GND due to stuck port data_in ;
-; clk_div:U_CLK_DIV|counter              ; Stuck at GND due to stuck port data_in ;
-; vga:U_VGA|mov_y[0]                     ; Stuck at VCC due to stuck port data_in ;
-; vga:U_VGA|mov_x[0]                     ; Stuck at VCC due to stuck port data_in ;
-; vga:U_VGA|mov_y[31]                    ; Lost fanout                            ;
-; vga:U_VGA|mov_x[31]                    ; Lost fanout                            ;
-; vga:U_VGA|mov_x[1..9,11..30]           ; Merged with vga:U_VGA|mov_x[10]        ;
-; vga:U_VGA|mov_y[1..9,11..30]           ; Merged with vga:U_VGA|mov_y[10]        ;
-; Total Number of Removed Registers = 69 ;                                        ;
-+----------------------------------------+----------------------------------------+
++----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                               ;
++-----------------------------------------+----------------------------------------+
+; Register name                           ; Reason for Removal                     ;
++-----------------------------------------+----------------------------------------+
+; vga:U_VGA|y_pos_p1[0]                   ; Stuck at GND due to stuck port data_in ;
+; vga:U_VGA|x_pos_p1[0..31]               ; Stuck at GND due to stuck port data_in ;
+; vga:U_VGA|y_pos[0]                      ; Stuck at GND due to stuck port data_in ;
+; vga:U_VGA|x_pos[0]                      ; Stuck at GND due to stuck port data_in ;
+; vga:U_VGA|y_pos_p1[8..30]               ; Stuck at GND due to stuck port data_in ;
+; vga:U_VGA|y_pos_p1[6,7]                 ; Stuck at VCC due to stuck port data_in ;
+; vga:U_VGA|y_pos_p1[4,5]                 ; Stuck at GND due to stuck port data_in ;
+; vga:U_VGA|y_pos_p1[3]                   ; Stuck at VCC due to stuck port data_in ;
+; vga:U_VGA|y_pos_p1[1,2,31]              ; Stuck at GND due to stuck port data_in ;
+; clk_div:U_CLK_DIV|counter               ; Stuck at GND due to stuck port data_in ;
+; vga:U_VGA|mov_y[0]                      ; Stuck at VCC due to stuck port data_in ;
+; vga:U_VGA|mov_x[0]                      ; Stuck at VCC due to stuck port data_in ;
+; vga:U_VGA|mov_y[31]                     ; Lost fanout                            ;
+; vga:U_VGA|mov_x[31]                     ; Lost fanout                            ;
+; vga:U_VGA|mov_x[1..9,11..30]            ; Merged with vga:U_VGA|mov_x[10]        ;
+; vga:U_VGA|mov_y[1..9,11..30]            ; Merged with vga:U_VGA|mov_y[10]        ;
+; Total Number of Removed Registers = 129 ;                                        ;
++-----------------------------------------+----------------------------------------+
 
 
 +-----------------------------------------------------------------------------------------+
@@ -275,12 +279,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 115   ;
+; Total registers                              ; 119   ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 23    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 18    ;
+; Number of registers using Clock Enable       ; 22    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -290,12 +294,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------+---------+
 ; Inverted Register                      ; Fan out ;
 +----------------------------------------+---------+
-; vga:U_VGA|y_pos[7]                     ; 4       ;
-; vga:U_VGA|y_pos[6]                     ; 4       ;
-; vga:U_VGA|y_pos[3]                     ; 5       ;
 ; vga:U_VGA|x_pos[7]                     ; 4       ;
 ; vga:U_VGA|x_pos[6]                     ; 4       ;
 ; vga:U_VGA|x_pos[3]                     ; 5       ;
+; vga:U_VGA|y_pos[7]                     ; 4       ;
+; vga:U_VGA|y_pos[6]                     ; 4       ;
+; vga:U_VGA|y_pos[3]                     ; 5       ;
 ; Total number of inverted registers = 6 ;         ;
 +----------------------------------------+---------+
 
@@ -393,23 +397,23 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 75                          ;
-; cycloneiii_ff         ; 115                         ;
+; cycloneiii_ff         ; 119                         ;
 ;     CLR               ; 23                          ;
-;     ENA               ; 18                          ;
+;     ENA               ; 22                          ;
 ;     plain             ; 74                          ;
-; cycloneiii_lcell_comb ; 349                         ;
+; cycloneiii_lcell_comb ; 361                         ;
 ;     arith             ; 182                         ;
 ;         2 data inputs ; 92                          ;
 ;         3 data inputs ; 90                          ;
-;     normal            ; 167                         ;
+;     normal            ; 179                         ;
 ;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 6                           ;
-;         2 data inputs ; 81                          ;
-;         3 data inputs ; 7                           ;
-;         4 data inputs ; 71                          ;
+;         2 data inputs ; 82                          ;
+;         3 data inputs ; 9                           ;
+;         4 data inputs ; 80                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 13.30                       ;
-; Average LUT depth     ; 8.52                        ;
+; Max LUT depth         ; 14.30                       ;
+; Average LUT depth     ; 8.76                        ;
 +-----------------------+-----------------------------+
 
 
@@ -428,7 +432,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.0 Build 915 10/25/2022 SC Lite Edition
-    Info: Processing started: Tue Apr  9 15:50:13 2024
+    Info: Processing started: Tue Apr  9 16:46:23 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off pong -c pong
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
@@ -459,17 +463,17 @@ Info (12021): Found 1 design units, including 1 entities, in source file de10_li
     Info (12023): Found entity 1: DE10_LITE_Golden_Top File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/DE10_LITE_Golden_Top.v Line: 29
 Info (12127): Elaborating entity "top_level" for the top level hierarchy
 Info (12128): Elaborating entity "vga" for hierarchy "vga:U_VGA" File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 53
-Warning (10492): VHDL Process Statement warning at vga.vhd(116): signal "mov_x" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga.vhd Line: 116
-Warning (10492): VHDL Process Statement warning at vga.vhd(117): signal "mov_y" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga.vhd Line: 117
-Info (12128): Elaborating entity "clk_div" for hierarchy "vga:U_VGA|clk_div:clk_div" File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga.vhd Line: 88
-Info (12128): Elaborating entity "vga_sync_gen" for hierarchy "vga:U_VGA|vga_sync_gen:sync" File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga.vhd Line: 100
+Warning (10540): VHDL Signal Declaration warning at vga.vhd(94): used explicit default value for signal "x_pos_p2" because signal was never assigned a value File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga.vhd Line: 94
+Warning (10540): VHDL Signal Declaration warning at vga.vhd(95): used explicit default value for signal "y_pos_p2" because signal was never assigned a value File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga.vhd Line: 95
+Warning (10492): VHDL Process Statement warning at vga.vhd(129): signal "mov_x" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga.vhd Line: 129
+Warning (10492): VHDL Process Statement warning at vga.vhd(130): signal "mov_y" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga.vhd Line: 130
+Warning (10492): VHDL Process Statement warning at vga.vhd(160): signal "y_pos_p1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga.vhd Line: 160
+Warning (10492): VHDL Process Statement warning at vga.vhd(161): signal "x_pos_p1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga.vhd Line: 161
+Info (12128): Elaborating entity "clk_div" for hierarchy "vga:U_VGA|clk_div:clk_div" File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga.vhd Line: 101
+Info (12128): Elaborating entity "vga_sync_gen" for hierarchy "vga:U_VGA|vga_sync_gen:sync" File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga.vhd Line: 113
 Info (12128): Elaborating entity "clk_div" for hierarchy "clk_div:U_CLK_DIV" File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 66
 Info (12128): Elaborating entity "decoder7seg" for hierarchy "decoder7seg:U_LED5" File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 76
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "red[3]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 26
-    Warning (13410): Pin "green[2]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 26
-    Warning (13410): Pin "green[3]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 26
-    Warning (13410): Pin "blue[2]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 26
     Warning (13410): Pin "led0[0]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 28
     Warning (13410): Pin "led0[1]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 28
     Warning (13410): Pin "led0[2]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 28
@@ -534,14 +538,14 @@ Warning (21074): Design contains 11 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "switch[8]" File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 24
     Warning (15610): No output dependent on input pin "switch[9]" File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 24
     Warning (15610): No output dependent on input pin "button_n[1]" File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 25
-Info (21057): Implemented 430 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 446 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 13 input pins
     Info (21059): Implemented 62 output pins
-    Info (21061): Implemented 355 logic cells
+    Info (21061): Implemented 371 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 68 warnings
     Info: Peak virtual memory: 4846 megabytes
-    Info: Processing ended: Tue Apr  9 15:50:21 2024
+    Info: Processing ended: Tue Apr  9 16:46:31 2024
     Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:11
+    Info: Total CPU time (on all processors): 00:00:13
 
 
