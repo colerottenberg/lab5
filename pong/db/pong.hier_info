@@ -1,15 +1,15 @@
 |top_level
 clk50MHz => clk_div:U_CLK_DIV.clk_in
-switch[0] => vga:U_VGA.en
-switch[1] => ~NO_FANOUT~
-switch[2] => ~NO_FANOUT~
-switch[3] => ~NO_FANOUT~
-switch[4] => ~NO_FANOUT~
-switch[5] => ~NO_FANOUT~
-switch[6] => ~NO_FANOUT~
-switch[7] => ~NO_FANOUT~
-switch[8] => ~NO_FANOUT~
-switch[9] => ~NO_FANOUT~
+switch[0] => vga:U_VGA.switch[0]
+switch[1] => vga:U_VGA.switch[1]
+switch[2] => vga:U_VGA.switch[2]
+switch[3] => vga:U_VGA.switch[3]
+switch[4] => vga:U_VGA.switch[4]
+switch[5] => vga:U_VGA.switch[5]
+switch[6] => vga:U_VGA.switch[6]
+switch[7] => vga:U_VGA.switch[7]
+switch[8] => vga:U_VGA.switch[8]
+switch[9] => vga:U_VGA.switch[9]
 button_n[0] => vga:U_VGA.rst
 button_n[0] => clk_div:U_CLK_DIV.rst
 button_n[1] => ~NO_FANOUT~

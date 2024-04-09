@@ -54,7 +54,8 @@ begin  -- STR
 		  --vga_clk = 25MHz clk
         clk     => vga_clk,
         rst     => rst,
-        en      => switch(0),
+        en      => '1',
+        switch  => switch,
         red     => red,
         green   => green,
         blue    => blue,
