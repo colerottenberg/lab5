@@ -120,34 +120,84 @@ begin
 					video_on => temp_video_on);
    -- VGA_SYNC_GEN ENDS	
 
-   -- The object moves around the screen and will bounce off the edges
-   ball_move: process(slow_clk, rst)
-	 	-- Assigning temp variables to movement and position variables
-		variable temp_mov_x: integer;
-		variable temp_mov_y: integer;
+   -- The ball movement process
+    -- The ball will move in the x and y directions
+    -- The ball will bounce off top and bottom walls
+    -- The ball will bounce off the paddles
+    -- The ball will reset to the center of the screen it hits the left or right wall
+    ball_move: process(slow_clk, rst)
+        variable temp_mov_x: integer;
+        variable temp_mov_y: integer;
     begin
-				temp_mov_x := mov_x;
-				temp_mov_y := mov_y;
+        temp_mov_x := mov_x;
+        temp_mov_y := mov_y;
         if rising_edge(slow_clk) then
             if rst = '1' then
                 x_pos <= 200;
                 y_pos <= 200;
                 mov_x <= 1;
                 mov_y <= 1;
+
             else
+                -- If the ball hits the left or right wall, reset the ball to the center
                 if x_pos + size >= X_MAX or x_pos <= 0 then
-                    mov_x <= -1 * mov_x;
-										temp_mov_x := -1 * temp_mov_x;
-								end if;
-                if y_pos + size >= Y_MAX or y_pos <= 0 then
+                    -- Reset the ball to the center
+                    x_pos <= 200;
+                    y_pos <= 200;
+                    mov_x <= 1;
+                    mov_y <= 1;
+                -- If the ball hits the top or bottom wall, reverse the direction of the ball
+                elsif y_pos + size >= Y_MAX or y_pos <= 0 then
                     mov_y <= -1 * mov_y;
-										temp_mov_y := -1 * temp_mov_y;
+                    temp_mov_y := -1 * temp_mov_y;
+                -- If the ball hits the paddle 1, reverse the direction of the ball
+                elsif
+                    x_pos <= x_pos_p1 + PADDLE_WIDTH and
+                    y_pos + size >= y_pos_p1 and
+                    y_pos <= y_pos_p1 + PADDLE_HEIGHT then
+                    mov_x <= -1 * mov_x;
+                    temp_mov_x := -1 * temp_mov_x;
+                -- If the ball hits the paddle 2, reverse the direction of the ball
+                elsif
+                    x_pos + size >= x_pos_p2 and
+                    y_pos + size >= y_pos_p2 and
+                    y_pos <= y_pos_p2 + PADDLE_HEIGHT then
+                    mov_x <= -1 * mov_x;
+                    temp_mov_x := -1 * temp_mov_x;
                 end if;
                 x_pos <= x_pos + (temp_mov_x * speed);
                 y_pos <= y_pos + (temp_mov_y * speed);
             end if;
         end if;
     end process ball_move;
+
+--    ball_move: process(slow_clk, rst)
+-- 	 	-- Assigning temp variables to movement and position variables
+-- 		variable temp_mov_x: integer;
+-- 		variable temp_mov_y: integer;
+--     begin
+-- 				temp_mov_x := mov_x;
+-- 				temp_mov_y := mov_y;
+--         if rising_edge(slow_clk) then
+--             if rst = '1' then
+--                 x_pos <= 200;
+--                 y_pos <= 200;
+--                 mov_x <= 1;
+--                 mov_y <= 1;
+--             else
+--                 if x_pos + size >= X_MAX or x_pos <= 0 then
+--                     mov_x <= -1 * mov_x;
+-- 										temp_mov_x := -1 * temp_mov_x;
+-- 								end if;
+--                 if y_pos + size >= Y_MAX or y_pos <= 0 then
+--                     mov_y <= -1 * mov_y;
+-- 										temp_mov_y := -1 * temp_mov_y;
+--                 end if;
+--                 x_pos <= x_pos + (temp_mov_x * speed);
+--                 y_pos <= y_pos + (temp_mov_y * speed);
+--             end if;
+--         end if;
+--     end process ball_move;
 
 
     -- Paddle 1 movement
