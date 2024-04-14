@@ -125,6 +125,8 @@ begin
     -- The ball will bounce off top and bottom walls
     -- The ball will bounce off the paddles
     -- The ball will reset to the center of the screen it hits the left or right wall
+
+    -- Additionally, if 'rst' is '1', the ball will reset to the center of the screen
     ball_move: process(slow_clk, rst)
         variable temp_mov_x: integer;
         variable temp_mov_y: integer;
@@ -132,11 +134,14 @@ begin
         temp_mov_x := mov_x;
         temp_mov_y := mov_y;
         if rising_edge(slow_clk) then
+
             if rst = '1' then
                 x_pos <= 200;
                 y_pos <= 200;
-                mov_x <= 1;
-                mov_y <= 1;
+                temp_mov_x := 0;
+                temp_mov_y := 0;
+                mov_x <= 0; -- Stopping the balls movement
+                mov_y <= 0;
 
             else
                 -- If the ball hits the left or right wall, reset the ball to the center
@@ -170,35 +175,6 @@ begin
             end if;
         end if;
     end process ball_move;
-
---    ball_move: process(slow_clk, rst)
--- 	 	-- Assigning temp variables to movement and position variables
--- 		variable temp_mov_x: integer;
--- 		variable temp_mov_y: integer;
---     begin
--- 				temp_mov_x := mov_x;
--- 				temp_mov_y := mov_y;
---         if rising_edge(slow_clk) then
---             if rst = '1' then
---                 x_pos <= 200;
---                 y_pos <= 200;
---                 mov_x <= 1;
---                 mov_y <= 1;
---             else
---                 if x_pos + size >= X_MAX or x_pos <= 0 then
---                     mov_x <= -1 * mov_x;
--- 										temp_mov_x := -1 * temp_mov_x;
--- 								end if;
---                 if y_pos + size >= Y_MAX or y_pos <= 0 then
---                     mov_y <= -1 * mov_y;
--- 										temp_mov_y := -1 * temp_mov_y;
---                 end if;
---                 x_pos <= x_pos + (temp_mov_x * speed);
---                 y_pos <= y_pos + (temp_mov_y * speed);
---             end if;
---         end if;
---     end process ball_move;
-
 
     -- Paddle 1 movement
     -- Paddle 1 is dependent on the switches to move up and down
@@ -255,30 +231,28 @@ begin
 	draw: process(clk, rst)
 	begin
 		if rising_edge(clk) then
-			if rst = '0' then
-				if unsigned(h_count) >= to_unsigned(x_pos, h_count'length) and unsigned(h_count) <= to_unsigned(x_pos + size, h_count'length) and
-                unsigned(v_count) >= to_unsigned(y_pos, v_count'length) and unsigned(v_count) <= to_unsigned(y_pos + size, v_count'length) and
-                temp_video_on = '1' then  
-					red <= "0111";
-					green <= "0011";
-					blue <= "1011";
-                elsif unsigned(h_count) >= to_unsigned(x_pos_p1, h_count'length) and unsigned(h_count) <= to_unsigned(x_pos_p1 + PADDLE_WIDTH, h_count'length) and
-                unsigned(v_count) >= to_unsigned(y_pos_p1, v_count'length) and unsigned(v_count) <= to_unsigned(y_pos_p1 + PADDLE_HEIGHT, v_count'length) and
-                temp_video_on = '1' then
-                    red <= "1111";
-                    green <= "1111";
-                    blue <= "1111";
-                elsif unsigned(h_count) >= to_unsigned(x_pos_p2, h_count'length) and unsigned(h_count) <= to_unsigned(x_pos_p2 + PADDLE_WIDTH, h_count'length) and
-                unsigned(v_count) >= to_unsigned(y_pos_p2, v_count'length) and unsigned(v_count) <= to_unsigned(y_pos_p2 + PADDLE_HEIGHT, v_count'length) and
-                temp_video_on = '1' then
-                    red <= "1111";
-                    green <= "1111";
-                    blue <= "1111";
-				else
-					red <= "0000";
-					green <= "0000";
-					blue <= "0000";
-				end if;
+            if unsigned(h_count) >= to_unsigned(x_pos, h_count'length) and unsigned(h_count) <= to_unsigned(x_pos + size, h_count'length) and
+            unsigned(v_count) >= to_unsigned(y_pos, v_count'length) and unsigned(v_count) <= to_unsigned(y_pos + size, v_count'length) and
+            temp_video_on = '1' then  
+                red <= "0111";
+                green <= "0011";
+                blue <= "1011";
+            elsif unsigned(h_count) >= to_unsigned(x_pos_p1, h_count'length) and unsigned(h_count) <= to_unsigned(x_pos_p1 + PADDLE_WIDTH, h_count'length) and
+            unsigned(v_count) >= to_unsigned(y_pos_p1, v_count'length) and unsigned(v_count) <= to_unsigned(y_pos_p1 + PADDLE_HEIGHT, v_count'length) and
+            temp_video_on = '1' then
+                red <= "1111";
+                green <= "1111";
+                blue <= "1111";
+            elsif unsigned(h_count) >= to_unsigned(x_pos_p2, h_count'length) and unsigned(h_count) <= to_unsigned(x_pos_p2 + PADDLE_WIDTH, h_count'length) and
+            unsigned(v_count) >= to_unsigned(y_pos_p2, v_count'length) and unsigned(v_count) <= to_unsigned(y_pos_p2 + PADDLE_HEIGHT, v_count'length) and
+            temp_video_on = '1' then
+                red <= "1111";
+                green <= "1111";
+                blue <= "1111";
+            else
+                red <= "0000";
+                green <= "0000";
+                blue <= "0000";
 			end if;
 		end if;
 	end process draw;

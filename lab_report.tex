@@ -9,11 +9,14 @@
 \usepackage{geometry}
 \usepackage{hyperref}
 
+\lstset{basicstyle=\ttfamily\color{blue}}
+\newcommand{\code}[1]{\lstinline|#1|}
+
 \geometry{margin=1in}
 
-\title{EEL 4712C - Digital Design: Lab Report}
+\title{EEL 4712C - Digital Design: Lab Report 5}
 \author{Cole Rottenberg \\ 11062528}
-\date{Due Date}
+\date{April 14\textsuperscript{th}, 2024}
 
 \lstset{
   language=VHDL,
@@ -50,22 +53,7 @@ entity test is
 end test;
 \end{lstlisting}
 
-\section*{Prelab Report}
-
-\subsection*{Prelab Questions}
-% Put all the answers to the prelab questions. These may be scanned using your phone or scanner. Not all prelabs have prelab questions
-
-\subsection*{Prelab Design and Implementation}
-% Go into detail about how you designed any design parts of the prelab. Then, go into detail about how you implemented any implementation parts of the prelab
-
-\subsection*{Reflection}
-% Talk about what you learned during the prelab. Bring up anything that was a stumped you for a while. Bring up any accomplishments you were proud of.
-
-\subsection*{Prelab Homework}
-% Show all work for the Prelab Homework here
-% Show all the work for every step in the Prelab Homework section. Label each part clearly and caption all figures. All simulations must be annotated. Annotation means pointing out particularly important parts of a simulation. This can be done with arrows or textboxes. Simple simulations will not have a lot to talk about, but later simulations will be a lot more complex. Any code written in the prelab should be commented a fair amount.
-
-\section*{Postlab Report}
+\section*{Lab Report}
 
 \subsection*{Problem Statement}
 % Provide a short informal description of the lab’s goals (From the lab assignment)
@@ -74,6 +62,25 @@ end test;
 % - Define the outputs.
 % - Define the function of your system. 
 % This section should be 1-2 paragraphs long.
+Lab 5 builds off of lab 4 by turning our simple VGA lab with a bouncing ball into the game "Pong". There are four main parts of the game outlined by the lab assignment:
+\begin{enumerate}
+  \item \textbf{Start and Game Over}: The Start scren should display the word "PONG" in the middle of the screen. The Start screen should also display a "Press B1" message at the bottom of the screen. The game should start when the user presses button 1. The game should end when one player reaches 11 points. The game should display a "Game Over" message when the game ends.
+  \item \textbf{Ball Movement}: The ball should move in a straight line at a constant speed. It should bounce off the top and bottom of the scrren. It should also bounce off the paddles. When the ball hits the left or right side of the screen, the ball should be sent back the to middle of the screen.
+  \item \textbf{Paddle Movement}: The paddles should move up and down with the push buttons. The paddles should not be able to move off the screen.
+  \item \textbf{Scoreboard}: The game should keep track of the score. The game should end when one player reaches 11 points. The scoring of the game should be done using a bitmap of characters displayed on the screen.
+\end{enumerate}
+\subsubsection*{Inputs}
+The inputs to control the game are the push buttons on the DE10-Lite board. Button 1 is used to start the game and button 2 is used to reset the game. The first two switches are used to control the ledt paddle and the third and fourth switches are used to control the right paddle. The ball moves at a constant speed and does not require any user input.
+
+\subsubsection*{Outputs}
+The outputs are the VGA display output. This includes: \code{VGA\_HSYNC}, \code{VGA\_VSYNC}, \code{VGA\_R}, \code{VGA\_G}, and \code{VGA\_B}. The VGA display will display the game screen, the paddles, the ball, the score, and the game over screen. The VGA display works best with a 640x480 resolution.
+
+\subsubsection*{Function}
+The function of the system is broken into three main states of the game: the start screen, the game screen, and the game over screen. The start screen displays the word "PONG" in the middle of the screen and a "Press B1" message at the bottom of the screen. The game screen displays the paddles, the ball, and the score. The game over screen displays a "Game Over" message. The game starts when the user presses button 1 and ends when one player reaches 11 points.
+
+\textbf{Start Screen}: The start screen displays the word "PONG" in the middle of the screen and a "Press B1" message at the bottom of the screen. The game starts when the user presses button 1.
+\textbf{Game Screen}: The game screen displays the paddles, the ball, and the score. The ball moves in a diagonal line at a constant speed. It bounces off the top and bottom of the screen and the paddles. When the ball hits the left or right side of the screen, the ball is sent back to the middle of the screen. The paddles move up and down with the push buttons. The game keeps track of the score and ends when one player reaches 11 points.
+\textbf{Game Over Screen}: The game over screen displays a "Game Over" message. The game ends when one player reaches 11 points.
 
 \subsection*{Design}
 % Describe the design decisions you made.
@@ -84,6 +91,17 @@ end test;
 % Explain your design choices(pros/cons).
 % Any designs made in prelab should be included here but more briefly.
 % This section should be 1-2 paragraphs long.
+\subsubsection*{Components}
+The components used in the design are the VGA\_sync module, a clock divider, and the a vga module. The design mimics the previous lab design with a change in the \textbf{vga.vhd} file to include the paddles and the ball. The vga module holds most of the logic for the game and incorporates the other two previously mentioned modules. The VGA\_sync module is used to generate the horizontal and vertical sync signals for the VGA display. The clock divider is used to generate the 25MHz clock signal from the 50MHz clock signal. The clock divider is also used to create a slow clk that control the timing of the movement.
+
+\subsubsection*{Signals}
+The signals that connect the components are the \code{clk\_50MHz} signal, the \code{clk\_25MHz} signal, the \code{slow\_clk} signal, the \code{VGA\_HSYNC} signal, the \code{VGA\_VSYNC} signal, the \code{VGA\_R} signal, the \code{VGA\_G} signal, and the \code{VGA\_B} signal. The \code{clk\_50MHz} signal is the 50MHz clock signal from the DE10-Lite board. The \code{clk\_25MHz} signal is the 25MHz clock signal generated by the clock divider. The \code{slow\_clk} signal is the slow clock signal generated by the clock divider. The \code{VGA\_HSYNC} signal is the horizontal sync signal generated by the VGA\_sync module. The \code{VGA\_VSYNC} signal is the vertical sync signal generated by the VGA\_sync module. The \code{VGA\_R} signal is the red signal generated by the vga module. The \code{VGA\_G} signal is the green signal generated by the vga module. The \code{VGA\_B} signal is the blue signal generated by the vga module. 
+
+\subsubsection*{Algorithms}
+The algorithms used in the design are the same as the previous lab with the addition of the paddles and the ball. The paddles move up and down with the push buttons. The ball moves in a diagonal line at a constant speed. It bounces off the top and bottom of the screen and the paddles. When the ball hits the left or right side of the screen, the ball is sent back to the middle of the screen. The game keeps track of the score and ends when one player reaches 11 points. In addition to the conditional logic used by the VGA, another component of the logic is the state machine responsible for controlling what to display on the screen.
+
+\subsubsection*{Flowchart}
+% Need to include a flowchart of the design.
 
 \subsection*{Implementation}
 % Describe the implementation process.
