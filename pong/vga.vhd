@@ -94,6 +94,10 @@ architecture default_arch of vga is
     signal x_pos_p2 : integer := 638 - PADDLE_WIDTH;
     signal y_pos_p2 : integer := 200;
 
+-- BITMAPS for PONG, P1 and P2 scores, 0-9 , game over and start
+-- using the 2D array to store the bitmaps
+-- PONG
+
 begin 		
 	-- Slow Clock Divider splits the 50MHz clock into 1Hz
 	clk_div: entity work.clk_div
