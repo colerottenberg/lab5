@@ -1,12 +1,12 @@
-Fitter Status : Successful - Sun Apr 14 15:14:28 2024
+Fitter Status : Successful - Tue Apr 16 15:29:29 2024
 Quartus Prime Version : 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 Revision Name : pong
 Top-level Entity Name : top_level
 Family : MAX 10
 Device : 10M50DAF484C6GES
 Timing Models : Preliminary
-Total logic elements : 996 / 49,760 ( 2 % )
-    Total combinational functions : 983 / 49,760 ( 2 % )
+Total logic elements : 1,057 / 49,760 ( 2 % )
+    Total combinational functions : 1,044 / 49,760 ( 2 % )
     Dedicated logic registers : 241 / 49,760 ( < 1 % )
 Total registers : 241
 Total pins : 75 / 360 ( 21 % )

@@ -130,9 +130,13 @@ begin
     ball_move: process(slow_clk, rst)
         variable temp_mov_x: integer;
         variable temp_mov_y: integer;
+        variable temp_x_pos: integer;
+        variable temp_y_pos: integer;
     begin
         temp_mov_x := mov_x;
         temp_mov_y := mov_y;
+        temp_x_pos := x_pos;
+        temp_y_pos := y_pos;
         if rising_edge(slow_clk) then
 
             if rst = '1' then
@@ -147,8 +151,8 @@ begin
                 -- If the ball hits the left or right wall, reset the ball to the center
                 if x_pos + size >= X_MAX or x_pos <= 0 then
                     -- Reset the ball to the center
-                    x_pos <= 200;
-                    y_pos <= 200;
+                    temp_x_pos := 200;
+                    temp_y_pos := 200;
                     mov_x <= 1;
                     mov_y <= 1;
                 -- If the ball hits the top or bottom wall, reverse the direction of the ball
@@ -170,8 +174,8 @@ begin
                     mov_x <= -1 * mov_x;
                     temp_mov_x := -1 * temp_mov_x;
                 end if;
-                x_pos <= x_pos + (temp_mov_x * speed);
-                y_pos <= y_pos + (temp_mov_y * speed);
+                x_pos <= temp_x_pos + (temp_mov_x * speed);
+                y_pos <= temp_y_pos + (temp_mov_y * speed);
             end if;
         end if;
     end process ball_move;
