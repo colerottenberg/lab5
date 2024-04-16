@@ -94,9 +94,39 @@ architecture default_arch of vga is
     signal x_pos_p2 : integer := 638 - PADDLE_WIDTH;
     signal y_pos_p2 : integer := 200;
 
+    signal P1_score : integer := 0;
+    signal P2_score : integer := 0;
+
 -- BITMAPS for PONG, P1 and P2 scores, 0-9 , game over and start
 -- using the 2D array to store the bitmaps
+-- The dimensions of the array are 8x4
 -- PONG
+    type arr_type is array (0 to 7) of std_logic_vector(3 downto 0);
+    type arr_type_2d is array (0 to 3, 0 to 7) of std_logic_vector(3 downto 0);
+    
+    signal bitmap : arr_type := ("0110", "1001", "1001", "1111", "1001", "1001", "1001", "1001");
+    signal bitmap_p1 : arr_type := ("1111", "1000", "1000", "1110", "1000", "1000", "1000", "1111");
+    signal bitmap_p2 : arr_type := ("1111", "0001", "0001", "0111", "0001", "0001", "0001", "1111");
+    signal bitmap_0 : arr_type := ("1111", "1001", "1001", "1001", "1001", "1001", "1001", "1111");
+    signal bitmap_1 : arr_type := ("0110", "0010", "0010", "0010", "0010", "0010", "0010", "1111");
+    signal bitmap_2 : arr_type := ("1111", "0001", "0001", "1111", "1000", "1000", "1000", "1111");
+    signal bitmap_3 : arr_type := ("1111", "0001", "0001", "0111", "0001", "0001", "0001", "1111");
+    signal bitmap_4 : arr_type := ("1001", "1001", "1001", "1111", "0001", "0001", "0001", "0001");
+    signal bitmap_5 : arr_type := ("1111", "1000", "1000", "1111", "0001", "0001", "0001", "1111");
+    signal bitmap_6 : arr_type := ("1111", "1000", "1000", "1111", "1001", "1001", "1001", "1111");
+    signal bitmap_7 : arr_type := ("1111", "0001", "0001", "0010", "0010", "0010", "0010", "0010");
+    signal bitmap_8 : arr_type := ("1111", "1001", "1001", "1111", "1001", "1001", "1001", "1111");
+    signal bitmap_9 : arr_type := ("1111", "1001", "1001", "1111", "0001", "0001", "0001", "1111");
+
+    -- Position of the bitmap
+
+    -- Position of the P1 score
+    signal x_pos_p1_score : integer := 100;
+    signal y_pos_p1_score : integer := 100;
+
+    -- Position of the P2 score
+    signal x_pos_p2_score : integer := 500;
+    signal y_pos_p2_score : integer := 100;
 
 begin 		
 	-- Slow Clock Divider splits the 50MHz clock into 1Hz
@@ -237,24 +267,40 @@ begin
 	draw: process(clk, rst)
 	begin
 		if rising_edge(clk) then
+            -- Drawing the ball
             if unsigned(h_count) >= to_unsigned(x_pos, h_count'length) and unsigned(h_count) <= to_unsigned(x_pos + size, h_count'length) and
             unsigned(v_count) >= to_unsigned(y_pos, v_count'length) and unsigned(v_count) <= to_unsigned(y_pos + size, v_count'length) and
             temp_video_on = '1' then  
                 red <= "0111";
                 green <= "0011";
                 blue <= "1011";
+            --- Paddle 1
             elsif unsigned(h_count) >= to_unsigned(x_pos_p1, h_count'length) and unsigned(h_count) <= to_unsigned(x_pos_p1 + PADDLE_WIDTH, h_count'length) and
             unsigned(v_count) >= to_unsigned(y_pos_p1, v_count'length) and unsigned(v_count) <= to_unsigned(y_pos_p1 + PADDLE_HEIGHT, v_count'length) and
             temp_video_on = '1' then
-                red <= "1111";
-                green <= "1111";
+                red <= "0000";
+                green <= "0000";
                 blue <= "1111";
+            --- Paddle 2
             elsif unsigned(h_count) >= to_unsigned(x_pos_p2, h_count'length) and unsigned(h_count) <= to_unsigned(x_pos_p2 + PADDLE_WIDTH, h_count'length) and
             unsigned(v_count) >= to_unsigned(y_pos_p2, v_count'length) and unsigned(v_count) <= to_unsigned(y_pos_p2 + PADDLE_HEIGHT, v_count'length) and
             temp_video_on = '1' then
                 red <= "1111";
-                green <= "1111";
-                blue <= "1111";
+                green <= "0000";
+                blue <= "0000";
+            --- Drawing score for P1
+            -- We need to draw the score and check if first we are in the display area
+            -- and then check what specific pixel we are in
+            -- we then check the value of the bitmap for that score at that pixel
+            -- Our bitmap is 8x4 so it has 8 rows and 4 columns
+            elsif unsigned(h_count) >= to_unsigned(x_pos_p1_score, h_count'length) and unsigned(h_count) <= to_unsigned(x_pos_p1_score + 4, h_count'length) and
+            unsigned(v_count) >= to_unsigned(y_pos_p1_score, v_count'length) and unsigned(v_count) <= to_unsigned(y_pos_p1_score + 8, v_count'length) and
+            temp_video_on = '1' then
+                case P1_score is
+                    when 0 =>
+                        -- Draw the bitmap for 0
+
+                        
             else
                 red <= "0000";
                 green <= "0000";

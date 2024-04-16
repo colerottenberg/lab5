@@ -1,6 +1,6 @@
 Analysis & Synthesis report for pong
-Tue Apr 16 15:42:55 2024
-Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+Tue Apr 16 16:48:17 2024
+Quartus Prime Version 22.1std.0 Build 915 10/25/2022 SC Lite Edition
 
 
 ---------------------
@@ -35,7 +35,7 @@ Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2023  Intel Corporation. All rights reserved.
+Copyright (C) 2022  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and any partner logic 
 functions, and any output files from any of the foregoing 
@@ -55,15 +55,15 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Apr 16 15:42:55 2024          ;
-; Quartus Prime Version              ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
+; Analysis & Synthesis Status        ; Successful - Tue Apr 16 16:48:17 2024          ;
+; Quartus Prime Version              ; 22.1std.0 Build 915 10/25/2022 SC Lite Edition ;
 ; Revision Name                      ; pong                                           ;
 ; Top-level Entity Name              ; top_level                                      ;
 ; Family                             ; MAX 10                                         ;
 ; Total logic elements               ; 1,053                                          ;
-;     Total combinational functions  ; 1,043                                          ;
-;     Dedicated logic registers      ; 241                                            ;
-; Total registers                    ; 241                                            ;
+;     Total combinational functions  ; 1,048                                          ;
+;     Dedicated logic registers      ; 239                                            ;
+; Total registers                    ; 239                                            ;
 ; Total pins                         ; 75                                             ;
 ; Total virtual pins                 ; 0                                              ;
 ; Total memory bits                  ; 0                                              ;
@@ -165,11 +165,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 24          ;
-; Maximum allowed            ; 16          ;
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 6           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 16          ;
+; Maximum used               ; 6           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
@@ -178,24 +178,21 @@ https://fpgasoftware.intel.com/eula.
 ;     Processor 4            ;   0.0%      ;
 ;     Processor 5            ;   0.0%      ;
 ;     Processor 6            ;   0.0%      ;
-;     Processor 7            ;   0.0%      ;
-;     Processor 8            ;   0.0%      ;
-;     Processors 9-16        ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                        ;
-+----------------------------------+-----------------+-----------------+--------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                 ; Library ;
-+----------------------------------+-----------------+-----------------+--------------------------------------------------------------+---------+
-; decoder7seg.vhd                  ; yes             ; User VHDL File  ; /home/crott/Documents/spring24/dd/lab5/pong/decoder7seg.vhd  ;         ;
-; clk_div.vhd                      ; yes             ; User VHDL File  ; /home/crott/Documents/spring24/dd/lab5/pong/clk_div.vhd      ;         ;
-; vga_sync_gen.vhd                 ; yes             ; User VHDL File  ; /home/crott/Documents/spring24/dd/lab5/pong/vga_sync_gen.vhd ;         ;
-; vga_lib.vhd                      ; yes             ; User VHDL File  ; /home/crott/Documents/spring24/dd/lab5/pong/vga_lib.vhd      ;         ;
-; vga.vhd                          ; yes             ; User VHDL File  ; /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd          ;         ;
-; top_level.vhd                    ; yes             ; User VHDL File  ; /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd    ;         ;
-+----------------------------------+-----------------+-----------------+--------------------------------------------------------------+---------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                  ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                           ; Library ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------------------+---------+
+; decoder7seg.vhd                  ; yes             ; User VHDL File  ; C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/decoder7seg.vhd  ;         ;
+; clk_div.vhd                      ; yes             ; User VHDL File  ; C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/clk_div.vhd      ;         ;
+; vga_sync_gen.vhd                 ; yes             ; User VHDL File  ; C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga_sync_gen.vhd ;         ;
+; vga_lib.vhd                      ; yes             ; User VHDL File  ; C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga_lib.vhd      ;         ;
+; vga.vhd                          ; yes             ; User VHDL File  ; C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga.vhd          ;         ;
+; top_level.vhd                    ; yes             ; User VHDL File  ; C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd    ;         ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------------------+
@@ -205,18 +202,18 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-------------------+
 ; Estimated Total logic elements              ; 1,053             ;
 ;                                             ;                   ;
-; Total combinational functions               ; 1043              ;
+; Total combinational functions               ; 1048              ;
 ; Logic element usage by number of LUT inputs ;                   ;
-;     -- 4 input functions                    ; 162               ;
-;     -- 3 input functions                    ; 445               ;
-;     -- <=2 input functions                  ; 436               ;
+;     -- 4 input functions                    ; 160               ;
+;     -- 3 input functions                    ; 447               ;
+;     -- <=2 input functions                  ; 441               ;
 ;                                             ;                   ;
 ; Logic elements by mode                      ;                   ;
-;     -- normal mode                          ; 467               ;
+;     -- normal mode                          ; 472               ;
 ;     -- arithmetic mode                      ; 576               ;
 ;                                             ;                   ;
-; Total registers                             ; 241               ;
-;     -- Dedicated logic registers            ; 241               ;
+; Total registers                             ; 239               ;
+;     -- Dedicated logic registers            ; 239               ;
 ;     -- I/O registers                        ; 0                 ;
 ;                                             ;                   ;
 ; I/O pins                                    ; 75                ;
@@ -225,8 +222,8 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;                   ;
 ; Maximum fan-out node                        ; button_n[0]~input ;
 ; Maximum fan-out                             ; 211               ;
-; Total fan-out                               ; 3564              ;
-; Average fan-out                             ; 2.49              ;
+; Total fan-out                               ; 3566              ;
+; Average fan-out                             ; 2.48              ;
 +---------------------------------------------+-------------------+
 
 
@@ -235,11 +232,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+----------------------------------------+--------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                    ; Entity Name  ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+----------------------------------------+--------------+--------------+
-; |top_level                 ; 1043 (0)            ; 241 (0)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 75   ; 0            ; 0          ; |top_level                             ; top_level    ; work         ;
+; |top_level                 ; 1048 (0)            ; 239 (0)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 75   ; 0            ; 0          ; |top_level                             ; top_level    ; work         ;
 ;    |clk_div:U_CLK_DIV|     ; 1 (1)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|clk_div:U_CLK_DIV           ; clk_div      ; work         ;
-;    |vga:U_VGA|             ; 1042 (957)          ; 240 (198)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA                   ; vga          ; work         ;
+;    |vga:U_VGA|             ; 1047 (961)          ; 238 (196)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA                   ; vga          ; work         ;
 ;       |clk_div:clk_div|    ; 36 (36)             ; 22 (22)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|clk_div:clk_div   ; clk_div      ; work         ;
-;       |vga_sync_gen:sync|  ; 49 (49)             ; 20 (20)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|vga_sync_gen:sync ; vga_sync_gen ; work         ;
+;       |vga_sync_gen:sync|  ; 50 (50)             ; 20 (20)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|vga_sync_gen:sync ; vga_sync_gen ; work         ;
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+----------------------------------------+--------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -259,6 +256,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; vga:U_VGA|x_pos_p2[3]                  ; Stuck at GND due to stuck port data_in ;
 ; vga:U_VGA|x_pos_p2[2]                  ; Stuck at VCC due to stuck port data_in ;
 ; vga:U_VGA|x_pos_p2[1]                  ; Stuck at GND due to stuck port data_in ;
+; vga:U_VGA|green[2,3]                   ; Stuck at GND due to stuck port data_in ;
 ; vga:U_VGA|x_pos_p1[0]                  ; Stuck at GND due to stuck port data_in ;
 ; vga:U_VGA|x_pos_p2[0]                  ; Stuck at GND due to stuck port data_in ;
 ; clk_div:U_CLK_DIV|counter              ; Stuck at GND due to stuck port data_in ;
@@ -266,7 +264,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; vga:U_VGA|x_pos[0]                     ; Stuck at GND due to stuck port data_in ;
 ; vga:U_VGA|mov_x[31]                    ; Lost fanout                            ;
 ; vga:U_VGA|mov_y[31]                    ; Lost fanout                            ;
-; Total Number of Removed Registers = 71 ;                                        ;
+; Total Number of Removed Registers = 73 ;                                        ;
 +----------------------------------------+----------------------------------------+
 
 
@@ -275,7 +273,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 241   ;
+; Total registers                              ; 239   ;
 ; Number of registers using Synchronous Clear  ; 56    ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 23    ;
@@ -290,18 +288,18 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------------------------+---------+
 ; Inverted Register                       ; Fan out ;
 +-----------------------------------------+---------+
-; vga:U_VGA|y_pos_p2[7]                   ; 5       ;
-; vga:U_VGA|y_pos_p2[6]                   ; 5       ;
-; vga:U_VGA|y_pos_p2[3]                   ; 5       ;
-; vga:U_VGA|y_pos_p1[7]                   ; 5       ;
-; vga:U_VGA|y_pos_p1[6]                   ; 5       ;
-; vga:U_VGA|y_pos_p1[3]                   ; 5       ;
 ; vga:U_VGA|x_pos[7]                      ; 4       ;
 ; vga:U_VGA|x_pos[6]                      ; 4       ;
 ; vga:U_VGA|x_pos[3]                      ; 7       ;
 ; vga:U_VGA|y_pos[7]                      ; 6       ;
 ; vga:U_VGA|y_pos[6]                      ; 6       ;
 ; vga:U_VGA|y_pos[3]                      ; 9       ;
+; vga:U_VGA|y_pos_p2[7]                   ; 5       ;
+; vga:U_VGA|y_pos_p2[6]                   ; 5       ;
+; vga:U_VGA|y_pos_p2[3]                   ; 5       ;
+; vga:U_VGA|y_pos_p1[7]                   ; 5       ;
+; vga:U_VGA|y_pos_p1[6]                   ; 5       ;
+; vga:U_VGA|y_pos_p1[3]                   ; 5       ;
 ; vga:U_VGA|mov_x[0]                      ; 2       ;
 ; vga:U_VGA|mov_y[0]                      ; 2       ;
 ; Total number of inverted registers = 14 ;         ;
@@ -313,9 +311,9 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output        ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------+
-; 3:1                ; 60 bits   ; 120 LEs       ; 60 LEs               ; 60 LEs                 ; Yes        ; |top_level|vga:U_VGA|mov_y[30]    ;
-; 4:1                ; 28 bits   ; 56 LEs        ; 56 LEs               ; 0 LEs                  ; Yes        ; |top_level|vga:U_VGA|y_pos_p2[9]  ;
-; 4:1                ; 28 bits   ; 56 LEs        ; 56 LEs               ; 0 LEs                  ; Yes        ; |top_level|vga:U_VGA|y_pos_p1[24] ;
+; 3:1                ; 60 bits   ; 120 LEs       ; 60 LEs               ; 60 LEs                 ; Yes        ; |top_level|vga:U_VGA|mov_y[17]    ;
+; 4:1                ; 28 bits   ; 56 LEs        ; 56 LEs               ; 0 LEs                  ; Yes        ; |top_level|vga:U_VGA|y_pos_p2[17] ;
+; 4:1                ; 28 bits   ; 56 LEs        ; 56 LEs               ; 0 LEs                  ; Yes        ; |top_level|vga:U_VGA|y_pos_p1[30] ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |top_level|vga:U_VGA|mov_x[0]     ;
 ; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |top_level|vga:U_VGA|y_pos_p2[7]  ;
 ; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |top_level|vga:U_VGA|y_pos_p1[7]  ;
@@ -415,24 +413,24 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 75                          ;
-; cycloneiii_ff         ; 241                         ;
+; cycloneiii_ff         ; 239                         ;
 ;     CLR               ; 23                          ;
 ;     ENA               ; 16                          ;
 ;     ENA SCLR          ; 56                          ;
-;     plain             ; 146                         ;
-; cycloneiii_lcell_comb ; 1045                        ;
+;     plain             ; 144                         ;
+; cycloneiii_lcell_comb ; 1050                        ;
 ;     arith             ; 576                         ;
 ;         2 data inputs ; 272                         ;
 ;         3 data inputs ; 304                         ;
-;     normal            ; 469                         ;
+;     normal            ; 474                         ;
 ;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 13                          ;
-;         2 data inputs ; 151                         ;
-;         3 data inputs ; 141                         ;
-;         4 data inputs ; 162                         ;
+;         2 data inputs ; 156                         ;
+;         3 data inputs ; 143                         ;
+;         4 data inputs ; 160                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 15.90                       ;
-; Average LUT depth     ; 10.40                       ;
+; Average LUT depth     ; 10.37                       ;
 +-----------------------+-----------------------------+
 
 
@@ -441,7 +439,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -450,119 +448,121 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
-    Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
-    Info: Processing started: Tue Apr 16 15:42:51 2024
+    Info: Version 22.1std.0 Build 915 10/25/2022 SC Lite Edition
+    Info: Processing started: Tue Apr 16 16:48:08 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off pong -c pong
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file decoder7seg.vhd
-    Info (12022): Found design unit 1: decoder7seg-rtl File: /home/crott/Documents/spring24/dd/lab5/pong/decoder7seg.vhd Line: 11
-    Info (12023): Found entity 1: decoder7seg File: /home/crott/Documents/spring24/dd/lab5/pong/decoder7seg.vhd Line: 4
+    Info (12022): Found design unit 1: decoder7seg-rtl File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/decoder7seg.vhd Line: 11
+    Info (12023): Found entity 1: decoder7seg File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/decoder7seg.vhd Line: 4
 Info (12021): Found 2 design units, including 1 entities, in source file clk_div.vhd
-    Info (12022): Found design unit 1: clk_div-Behavioral File: /home/crott/Documents/spring24/dd/lab5/pong/clk_div.vhd Line: 21
-    Info (12023): Found entity 1: clk_div File: /home/crott/Documents/spring24/dd/lab5/pong/clk_div.vhd Line: 9
+    Info (12022): Found design unit 1: clk_div-Behavioral File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/clk_div.vhd Line: 21
+    Info (12023): Found entity 1: clk_div File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/clk_div.vhd Line: 9
 Info (12021): Found 2 design units, including 1 entities, in source file vga_tb.vhd
-    Info (12022): Found design unit 1: vga_tb-TB File: /home/crott/Documents/spring24/dd/lab5/pong/vga_tb.vhd Line: 12
-    Info (12023): Found entity 1: vga_tb File: /home/crott/Documents/spring24/dd/lab5/pong/vga_tb.vhd Line: 9
+    Info (12022): Found design unit 1: vga_tb-TB File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga_tb.vhd Line: 12
+    Info (12023): Found entity 1: vga_tb File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga_tb.vhd Line: 9
 Info (12021): Found 2 design units, including 1 entities, in source file vga_sync_gen.vhd
-    Info (12022): Found design unit 1: vga_sync_gen-bhv File: /home/crott/Documents/spring24/dd/lab5/pong/vga_sync_gen.vhd Line: 18
-    Info (12023): Found entity 1: vga_sync_gen File: /home/crott/Documents/spring24/dd/lab5/pong/vga_sync_gen.vhd Line: 6
+    Info (12022): Found design unit 1: vga_sync_gen-bhv File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga_sync_gen.vhd Line: 18
+    Info (12023): Found entity 1: vga_sync_gen File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga_sync_gen.vhd Line: 6
 Info (12021): Found 1 design units, including 0 entities, in source file vga_lib.vhd
-    Info (12022): Found design unit 1: VGA_LIB File: /home/crott/Documents/spring24/dd/lab5/pong/vga_lib.vhd Line: 7
+    Info (12022): Found design unit 1: VGA_LIB File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga_lib.vhd Line: 7
 Info (12021): Found 2 design units, including 1 entities, in source file vga_basic_tb.vhd
-    Info (12022): Found design unit 1: vga_basic_tb-TB File: /home/crott/Documents/spring24/dd/lab5/pong/vga_basic_tb.vhd Line: 12
-    Info (12023): Found entity 1: vga_basic_tb File: /home/crott/Documents/spring24/dd/lab5/pong/vga_basic_tb.vhd Line: 9
+    Info (12022): Found design unit 1: vga_basic_tb-TB File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga_basic_tb.vhd Line: 12
+    Info (12023): Found entity 1: vga_basic_tb File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga_basic_tb.vhd Line: 9
 Info (12021): Found 2 design units, including 1 entities, in source file vga.vhd
-    Info (12022): Found design unit 1: vga-default_arch File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 68
-    Info (12023): Found entity 1: vga File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 57
+    Info (12022): Found design unit 1: vga-default_arch File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga.vhd Line: 68
+    Info (12023): Found entity 1: vga File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga.vhd Line: 57
 Info (12021): Found 2 design units, including 1 entities, in source file top_level.vhd
-    Info (12022): Found design unit 1: top_level-STR File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 43
-    Info (12023): Found entity 1: top_level File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 21
-Info (12021): Found 1 design units, including 1 entities, in source file DE10_LITE_Golden_Top.v
-    Info (12023): Found entity 1: DE10_LITE_Golden_Top File: /home/crott/Documents/spring24/dd/lab5/pong/DE10_LITE_Golden_Top.v Line: 29
+    Info (12022): Found design unit 1: top_level-STR File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 43
+    Info (12023): Found entity 1: top_level File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 21
+Info (12021): Found 1 design units, including 1 entities, in source file de10_lite_golden_top.v
+    Info (12023): Found entity 1: DE10_LITE_Golden_Top File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/DE10_LITE_Golden_Top.v Line: 29
 Info (12127): Elaborating entity "top_level" for the top level hierarchy
-Info (12128): Elaborating entity "vga" for hierarchy "vga:U_VGA" File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 53
-Warning (10492): VHDL Process Statement warning at vga.vhd(134): signal "mov_x" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 134
-Warning (10492): VHDL Process Statement warning at vga.vhd(135): signal "mov_y" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 135
-Warning (10492): VHDL Process Statement warning at vga.vhd(136): signal "x_pos" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 136
-Warning (10492): VHDL Process Statement warning at vga.vhd(137): signal "y_pos" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 137
-Warning (10492): VHDL Process Statement warning at vga.vhd(188): signal "y_pos_p1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 188
-Warning (10492): VHDL Process Statement warning at vga.vhd(189): signal "x_pos_p1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 189
-Warning (10492): VHDL Process Statement warning at vga.vhd(213): signal "y_pos_p2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 213
-Warning (10492): VHDL Process Statement warning at vga.vhd(214): signal "x_pos_p2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 214
-Info (12128): Elaborating entity "clk_div" for hierarchy "vga:U_VGA|clk_div:clk_div" File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 99
-Info (12128): Elaborating entity "vga_sync_gen" for hierarchy "vga:U_VGA|vga_sync_gen:sync" File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 111
-Info (12128): Elaborating entity "clk_div" for hierarchy "clk_div:U_CLK_DIV" File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 67
-Info (12128): Elaborating entity "decoder7seg" for hierarchy "decoder7seg:U_LED5" File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 77
+Info (12128): Elaborating entity "vga" for hierarchy "vga:U_VGA" File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 53
+Warning (10492): VHDL Process Statement warning at vga.vhd(153): signal "mov_x" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga.vhd Line: 153
+Warning (10492): VHDL Process Statement warning at vga.vhd(154): signal "mov_y" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga.vhd Line: 154
+Warning (10492): VHDL Process Statement warning at vga.vhd(155): signal "x_pos" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga.vhd Line: 155
+Warning (10492): VHDL Process Statement warning at vga.vhd(156): signal "y_pos" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga.vhd Line: 156
+Warning (10492): VHDL Process Statement warning at vga.vhd(207): signal "y_pos_p1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga.vhd Line: 207
+Warning (10492): VHDL Process Statement warning at vga.vhd(208): signal "x_pos_p1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga.vhd Line: 208
+Warning (10492): VHDL Process Statement warning at vga.vhd(232): signal "y_pos_p2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga.vhd Line: 232
+Warning (10492): VHDL Process Statement warning at vga.vhd(233): signal "x_pos_p2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga.vhd Line: 233
+Info (12128): Elaborating entity "clk_div" for hierarchy "vga:U_VGA|clk_div:clk_div" File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga.vhd Line: 118
+Info (12128): Elaborating entity "vga_sync_gen" for hierarchy "vga:U_VGA|vga_sync_gen:sync" File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/vga.vhd Line: 130
+Info (12128): Elaborating entity "clk_div" for hierarchy "clk_div:U_CLK_DIV" File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 67
+Info (12128): Elaborating entity "decoder7seg" for hierarchy "decoder7seg:U_LED5" File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 77
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "led0[0]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 28
-    Warning (13410): Pin "led0[1]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 28
-    Warning (13410): Pin "led0[2]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 28
-    Warning (13410): Pin "led0[3]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 28
-    Warning (13410): Pin "led0[4]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 28
-    Warning (13410): Pin "led0[5]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 28
-    Warning (13410): Pin "led0[6]" is stuck at VCC File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 28
-    Warning (13410): Pin "led0_dp" is stuck at VCC File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 29
-    Warning (13410): Pin "led1[0]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 30
-    Warning (13410): Pin "led1[1]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 30
-    Warning (13410): Pin "led1[2]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 30
-    Warning (13410): Pin "led1[3]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 30
-    Warning (13410): Pin "led1[4]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 30
-    Warning (13410): Pin "led1[5]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 30
-    Warning (13410): Pin "led1[6]" is stuck at VCC File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 30
-    Warning (13410): Pin "led1_dp" is stuck at VCC File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 31
-    Warning (13410): Pin "led2[0]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 32
-    Warning (13410): Pin "led2[1]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 32
-    Warning (13410): Pin "led2[2]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 32
-    Warning (13410): Pin "led2[3]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 32
-    Warning (13410): Pin "led2[4]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 32
-    Warning (13410): Pin "led2[5]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 32
-    Warning (13410): Pin "led2[6]" is stuck at VCC File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 32
-    Warning (13410): Pin "led2_dp" is stuck at VCC File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 33
-    Warning (13410): Pin "led3[0]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 34
-    Warning (13410): Pin "led3[1]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 34
-    Warning (13410): Pin "led3[2]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 34
-    Warning (13410): Pin "led3[3]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 34
-    Warning (13410): Pin "led3[4]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 34
-    Warning (13410): Pin "led3[5]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 34
-    Warning (13410): Pin "led3[6]" is stuck at VCC File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 34
-    Warning (13410): Pin "led3_dp" is stuck at VCC File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 35
-    Warning (13410): Pin "led4[0]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 36
-    Warning (13410): Pin "led4[1]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 36
-    Warning (13410): Pin "led4[2]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 36
-    Warning (13410): Pin "led4[3]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 36
-    Warning (13410): Pin "led4[4]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 36
-    Warning (13410): Pin "led4[5]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 36
-    Warning (13410): Pin "led4[6]" is stuck at VCC File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 36
-    Warning (13410): Pin "led4_dp" is stuck at VCC File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 37
-    Warning (13410): Pin "led5[0]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 38
-    Warning (13410): Pin "led5[1]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 38
-    Warning (13410): Pin "led5[2]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 38
-    Warning (13410): Pin "led5[3]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 38
-    Warning (13410): Pin "led5[4]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 38
-    Warning (13410): Pin "led5[5]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 38
-    Warning (13410): Pin "led5[6]" is stuck at VCC File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 38
-    Warning (13410): Pin "led5_dp" is stuck at VCC File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 39
+    Warning (13410): Pin "green[2]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 26
+    Warning (13410): Pin "green[3]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 26
+    Warning (13410): Pin "led0[0]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 28
+    Warning (13410): Pin "led0[1]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 28
+    Warning (13410): Pin "led0[2]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 28
+    Warning (13410): Pin "led0[3]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 28
+    Warning (13410): Pin "led0[4]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 28
+    Warning (13410): Pin "led0[5]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 28
+    Warning (13410): Pin "led0[6]" is stuck at VCC File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 28
+    Warning (13410): Pin "led0_dp" is stuck at VCC File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 29
+    Warning (13410): Pin "led1[0]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 30
+    Warning (13410): Pin "led1[1]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 30
+    Warning (13410): Pin "led1[2]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 30
+    Warning (13410): Pin "led1[3]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 30
+    Warning (13410): Pin "led1[4]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 30
+    Warning (13410): Pin "led1[5]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 30
+    Warning (13410): Pin "led1[6]" is stuck at VCC File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 30
+    Warning (13410): Pin "led1_dp" is stuck at VCC File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 31
+    Warning (13410): Pin "led2[0]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 32
+    Warning (13410): Pin "led2[1]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 32
+    Warning (13410): Pin "led2[2]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 32
+    Warning (13410): Pin "led2[3]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 32
+    Warning (13410): Pin "led2[4]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 32
+    Warning (13410): Pin "led2[5]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 32
+    Warning (13410): Pin "led2[6]" is stuck at VCC File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 32
+    Warning (13410): Pin "led2_dp" is stuck at VCC File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 33
+    Warning (13410): Pin "led3[0]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 34
+    Warning (13410): Pin "led3[1]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 34
+    Warning (13410): Pin "led3[2]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 34
+    Warning (13410): Pin "led3[3]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 34
+    Warning (13410): Pin "led3[4]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 34
+    Warning (13410): Pin "led3[5]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 34
+    Warning (13410): Pin "led3[6]" is stuck at VCC File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 34
+    Warning (13410): Pin "led3_dp" is stuck at VCC File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 35
+    Warning (13410): Pin "led4[0]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 36
+    Warning (13410): Pin "led4[1]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 36
+    Warning (13410): Pin "led4[2]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 36
+    Warning (13410): Pin "led4[3]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 36
+    Warning (13410): Pin "led4[4]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 36
+    Warning (13410): Pin "led4[5]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 36
+    Warning (13410): Pin "led4[6]" is stuck at VCC File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 36
+    Warning (13410): Pin "led4_dp" is stuck at VCC File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 37
+    Warning (13410): Pin "led5[0]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 38
+    Warning (13410): Pin "led5[1]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 38
+    Warning (13410): Pin "led5[2]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 38
+    Warning (13410): Pin "led5[3]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 38
+    Warning (13410): Pin "led5[4]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 38
+    Warning (13410): Pin "led5[5]" is stuck at GND File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 38
+    Warning (13410): Pin "led5[6]" is stuck at VCC File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 38
+    Warning (13410): Pin "led5_dp" is stuck at VCC File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 39
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 2 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 7 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "switch[4]" File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 24
-    Warning (15610): No output dependent on input pin "switch[5]" File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 24
-    Warning (15610): No output dependent on input pin "switch[6]" File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 24
-    Warning (15610): No output dependent on input pin "switch[7]" File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 24
-    Warning (15610): No output dependent on input pin "switch[8]" File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 24
-    Warning (15610): No output dependent on input pin "switch[9]" File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 24
-    Warning (15610): No output dependent on input pin "button_n[1]" File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 25
-Info (21057): Implemented 1130 device resources after synthesis - the final resource count might be different
+    Warning (15610): No output dependent on input pin "switch[4]" File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 24
+    Warning (15610): No output dependent on input pin "switch[5]" File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 24
+    Warning (15610): No output dependent on input pin "switch[6]" File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 24
+    Warning (15610): No output dependent on input pin "switch[7]" File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 24
+    Warning (15610): No output dependent on input pin "switch[8]" File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 24
+    Warning (15610): No output dependent on input pin "switch[9]" File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 24
+    Warning (15610): No output dependent on input pin "button_n[1]" File: C:/Users/cole/OneDrive/Documents/Sping24/dd/lab5/pong/top_level.vhd Line: 25
+Info (21057): Implemented 1131 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 13 input pins
     Info (21059): Implemented 62 output pins
-    Info (21061): Implemented 1055 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 66 warnings
-    Info: Peak virtual memory: 511 megabytes
-    Info: Processing ended: Tue Apr 16 15:42:55 2024
-    Info: Elapsed time: 00:00:04
-    Info: Total CPU time (on all processors): 00:00:12
+    Info (21061): Implemented 1056 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 68 warnings
+    Info: Peak virtual memory: 4842 megabytes
+    Info: Processing ended: Tue Apr 16 16:48:17 2024
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:14
 
 
