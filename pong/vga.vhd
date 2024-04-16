@@ -94,8 +94,6 @@ architecture default_arch of vga is
     signal x_pos_p2 : integer := 638 - PADDLE_WIDTH;
     signal y_pos_p2 : integer := 200;
 
-    signal v_on : std_logic := '0';
-
 begin 		
 	-- Slow Clock Divider splits the 50MHz clock into 1Hz
 	clk_div: entity work.clk_div

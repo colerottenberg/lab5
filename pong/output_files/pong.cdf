@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(10M50DAF484ES) Path("/home/crott/Documents/spring24/dd/lab5/pong/output_files/") File("pong.pof") MfrSpec(OpMask(1) Child_OpMask(2 1 1));
+		Device PartName(10M50DAF484ES) Path("/home/crott/Documents/spring24/dd/lab5/pong/output_files/") File("pong.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 
