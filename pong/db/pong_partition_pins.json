@@ -28,6 +28,14 @@
 					"strict" : false
 				},
 				{
+					"name" : "green[2]",
+					"strict" : false
+				},
+				{
+					"name" : "green[3]",
+					"strict" : false
+				},
+				{
 					"name" : "blue[0]",
 					"strict" : false
 				},
@@ -64,15 +72,15 @@
 					"strict" : false
 				},
 				{
-					"name" : "clk50MHz",
-					"strict" : false
-				},
-				{
 					"name" : "switch[0]",
 					"strict" : false
 				},
 				{
 					"name" : "switch[1]",
+					"strict" : false
+				},
+				{
+					"name" : "clk50MHz",
 					"strict" : false
 				}
 			]

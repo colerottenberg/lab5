@@ -101,22 +101,119 @@ architecture default_arch of vga is
 -- using the 2D array to store the bitmaps
 -- The dimensions of the array are 8x4
 -- PONG
-    type arr_type is array (0 to 7) of std_logic_vector(3 downto 0);
-    type arr_type_2d is array (0 to 3, 0 to 7) of std_logic_vector(3 downto 0);
+
+    constant BM_SIZE : integer := 5;
+
+    type bitmap is array(4 downto 0) of std_logic_vector(4 downto 0);
     
-    signal bitmap : arr_type := ("0110", "1001", "1001", "1111", "1001", "1001", "1001", "1001");
-    signal bitmap_p1 : arr_type := ("1111", "1000", "1000", "1110", "1000", "1000", "1000", "1111");
-    signal bitmap_p2 : arr_type := ("1111", "0001", "0001", "0111", "0001", "0001", "0001", "1111");
-    signal bitmap_0 : arr_type := ("1111", "1001", "1001", "1001", "1001", "1001", "1001", "1111");
-    signal bitmap_1 : arr_type := ("0110", "0010", "0010", "0010", "0010", "0010", "0010", "1111");
-    signal bitmap_2 : arr_type := ("1111", "0001", "0001", "1111", "1000", "1000", "1000", "1111");
-    signal bitmap_3 : arr_type := ("1111", "0001", "0001", "0111", "0001", "0001", "0001", "1111");
-    signal bitmap_4 : arr_type := ("1001", "1001", "1001", "1111", "0001", "0001", "0001", "0001");
-    signal bitmap_5 : arr_type := ("1111", "1000", "1000", "1111", "0001", "0001", "0001", "1111");
-    signal bitmap_6 : arr_type := ("1111", "1000", "1000", "1111", "1001", "1001", "1001", "1111");
-    signal bitmap_7 : arr_type := ("1111", "0001", "0001", "0010", "0010", "0010", "0010", "0010");
-    signal bitmap_8 : arr_type := ("1111", "1001", "1001", "1111", "1001", "1001", "1001", "1111");
-    signal bitmap_9 : arr_type := ("1111", "1001", "1001", "1111", "0001", "0001", "0001", "1111");
+    constant ZERO : bitmap := (
+        "11111",
+        "10001",
+        "10001",
+        "10001",
+        "11111"
+    );
+
+    constant ONE : bitmap := (
+        "00100",
+        "01100",
+        "10100",
+        "00100",
+        "11111"
+    );
+
+    constant TWO : bitmap := (
+        "11111",
+        "00001",
+        "11111",
+        "10000",
+        "11111"
+    );
+
+    constant THREE : bitmap := (
+        "11111",
+        "00001",
+        "11111",
+        "00001",
+        "11111"
+    );
+
+    constant FOUR : bitmap := (
+        "10001",
+        "10001",
+        "11111",
+        "00001",
+        "00001"
+    );
+
+    constant FIVE : bitmap := (
+        "11111",
+        "10000",
+        "11111",
+        "00001",
+        "11111"
+    );
+
+    constant SIX : bitmap := (
+        "11111",
+        "10000",
+        "11111",
+        "10001",
+        "11111"
+    );
+
+    constant SEVEN : bitmap := (
+        "11111",
+        "00001",
+        "00010",
+        "00100",
+        "01000"
+    );
+
+    constant EIGHT : bitmap := (
+        "11111",
+        "10001",
+        "11111",
+        "10001",
+        "11111"
+    );
+
+    constant NINE : bitmap := (
+        "11111",
+        "10001",
+        "11111",
+        "00001",
+        "11111"
+    );
+
+    -- using a function to convert score to a bitmap
+    function score_to_bitmap(score : integer) return bitmap is
+    begin
+        case score is
+            when 0 =>
+                return ZERO;
+            when 1 =>
+                return ONE;
+            when 2 =>
+                return TWO;
+            when 3 =>
+                return THREE;
+            when 4 =>
+                return FOUR;
+            when 5 =>
+                return FIVE;
+            when 6 =>
+                return SIX;
+            when 7 =>
+                return SEVEN;
+            when 8 =>
+                return EIGHT;
+            when 9 =>
+                return NINE;
+            when others =>
+                return ZERO;
+        end case;
+    end score_to_bitmap;
 
     -- Position of the bitmap
 
@@ -187,6 +284,12 @@ begin
                     temp_y_pos := 200;
                     mov_x <= 1;
                     mov_y <= 1;
+                    -- Increment the score of the player who scored
+                    if x_pos + size >= X_MAX then
+                        P1_score <= P1_score + 1;
+                    else
+                        P2_score <= P2_score + 1;
+                    end if;
                 -- If the ball hits the top or bottom wall, reverse the direction of the ball
                 elsif y_pos + size >= Y_MAX or y_pos <= 0 then
                     mov_y <= -1 * mov_y;
@@ -288,19 +391,28 @@ begin
                 red <= "1111";
                 green <= "0000";
                 blue <= "0000";
+            elsif 
+            unsigned(h_count) >= to_unsigned(x_pos_p1_score, h_count'length) 
+            and unsigned(h_count) <= to_unsigned(x_pos_p1_score + BM_SIZE * 3, h_count'length) 
+            and unsigned(v_count) >= to_unsigned(y_pos_p1_score, v_count'length) 
+            and unsigned(v_count) <= to_unsigned(y_pos_p1_score + BM_SIZE * 5, v_count'length) 
+            and temp_video_on = '1' then
+                -- Convert the y_pos_p1_score and x_pos_p1_score to unsigned to perform the subtraction
             --- Drawing score for P1
             -- We need to draw the score and check if first we are in the display area
             -- and then check what specific pixel we are in
             -- we then check the value of the bitmap for that score at that pixel
-            -- Our bitmap is 8x4 so it has 8 rows and 4 columns
-            elsif unsigned(h_count) >= to_unsigned(x_pos_p1_score, h_count'length) and unsigned(h_count) <= to_unsigned(x_pos_p1_score + 4, h_count'length) and
-            unsigned(v_count) >= to_unsigned(y_pos_p1_score, v_count'length) and unsigned(v_count) <= to_unsigned(y_pos_p1_score + 8, v_count'length) and
-            temp_video_on = '1' then
-                case P1_score is
-                    when 0 =>
-                        -- Draw the bitmap for 0
+            -- Our bitmap is 8x4 so it has 5 rows and 5 columns
+                if score_to_bitmap(P1_score)(BM_SIZE - 1 - to_integer(unsigned(v_count) - y_pos_p1_score) / 5)(BM_SIZE - 1 - to_integer(unsigned(h_count) - x_pos_p1_score) / 3) = '1' then
+                    red <= "1111";
+                    green <= "1111";
+                    blue <= "1111";
+                else
+                    red <= "0000";
+                    green <= "0000";
+                    blue <= "0000";
+                end if;
 
-                        
             else
                 red <= "0000";
                 green <= "0000";
