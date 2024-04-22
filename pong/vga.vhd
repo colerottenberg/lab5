@@ -248,6 +248,30 @@ architecture default_arch of vga is
         "11111"
     );
 
+    -- Adding the WIN Letters
+    constant W : bitmap := (
+        "10001",
+        "10001",
+        "10001",
+        "10101",
+        "11011"
+    );
+
+    constant I : bitmap := (
+        "11111",
+        "00100",
+        "00100",
+        "00100",
+        "11111"
+    );
+
+    constant S : bitmap := (
+        "11111",
+        "10000",
+        "11111",
+        "00001",
+        "11111"
+    );
     -- Position of the bitmap
 
     -- Position of the P1 score
@@ -374,11 +398,9 @@ begin
             if rst = '1' then
                 game_state <= 0;
                 -- Reset the scores
-                P1_score <= 0;
-                P2_score <= 0;
+                -- P1_score <= 0; 
+                -- P2_score <= 0;
                 -- Reset the ball position
-                x_pos <= 200;
-                y_pos <= 200;
             else
                 case game_state is
                     when 0 =>
@@ -397,6 +419,7 @@ begin
                 game_state <= temp_game_state;
             end if;
         end if;
+    end process game_state_machine;
 
    -- The ball movement process
     -- The ball will move in the x and y directions
@@ -499,7 +522,7 @@ begin
         temp_y_pos_p2 := y_pos_p2;
         temp_x_pos_p2 := x_pos_p2;
         if rising_edge(slow_clk) then
-            if rst = '1' then
+            if rst = '1' or game_state = 0 or game_state = 2 or game_state = 3 then
                 y_pos_p2 <= 200;
                 x_pos_p2 <= 638 - PADDLE_WIDTH;
             else
@@ -519,9 +542,81 @@ begin
 	draw: process(clk, rst)
 	begin
 		if rising_edge(clk) then
-            -- Drawing the ball
-            if unsigned(h_count) >= to_unsigned(x_pos, h_count'length) and unsigned(h_count) <= to_unsigned(x_pos + size, h_count'length) and
+		    -- If in the start state, display the PONG letters
+		    -- If in the win state, display the WIN letters with the respective player
+
+            -- Draw the PONG letters
+            if unsigned(h_count) >= to_unsigned(x_pos_p, h_count'length) and unsigned(h_count) <= to_unsigned(x_pos_p + BM_SIZE * 3, h_count'length) and
+            unsigned(v_count) >= to_unsigned(y_pos_p, v_count'length) and unsigned(v_count) <= to_unsigned(y_pos_p + BM_SIZE * 5, v_count'length) and
+            game_state = 0 and
+            temp_video_on = '1' then
+                if P(BM_SIZE - 1 - to_integer(unsigned(v_count) - y_pos_p) / 5)(BM_SIZE - 1 - to_integer(unsigned(h_count) - x_pos_p) / 3) = '1' then
+                    red <= "1111";
+                    green <= "1111";
+                    blue <= "1111";
+                else
+                    red <= "0000";
+                    green <= "0000";
+                    blue <= "0000";
+                end if;
+            -- Display O
+            elsif unsigned(h_count) >= to_unsigned(x_pos_o, h_count'length) and unsigned(h_count) <= to_unsigned(x_pos_o + BM_SIZE * 3, h_count'length) and
+            unsigned(v_count) >= to_unsigned(y_pos_o, v_count'length) and unsigned(v_count) <= to_unsigned(y_pos_o + BM_SIZE * 5, v_count'length) and
+            game_state = 0 and
+            temp_video_on = '1' then
+                if O(BM_SIZE - 1 - to_integer(unsigned(v_count) - y_pos_o) / 5)(BM_SIZE - 1 - to_integer(unsigned(h_count) - x_pos_o) / 3) = '1' then
+                    red <= "1111";
+                    green <= "1111";
+                    blue <= "1111";
+                else
+                    red <= "0000";
+                    green <= "0000";
+                    blue <= "0000";
+                end if;
+            -- Display N
+            -- elsif unsigned(h_count) >= to_unsigned(x_pos_n, h_count'length) and unsigned(h_count) <= to_unsigned(x_pos_n + BM_SIZE * 3, h_count'length) and
+            -- unsigned(v_count) >= to_unsigned(y_pos_n, v_count'length) and unsigned(v_count) <= to_unsigned(y_pos_n + BM_SIZE * 5, v_count'length) and
+            -- game_state = 0 and
+            -- temp_video_on = '1' then
+            --     if N(BM_SIZE - 1 - to_integer(unsigned(v_count) - y_pos_n) / 5)(BM_SIZE - 1 - to_integer(unsigned(h_count) - x_pos_n) / 3) = '1' then
+            --         red <= "1111";
+            --         green <= "1111";
+            --         blue <= "1111";
+            --     else
+            --         red <= "0000";
+            --         green <= "0000";
+            --         blue <= "0000";
+            --     end if;
+            -- else
+            --     red <= "0000";
+            --     green <= "0000";
+            --     blue <= "0000";
+            -- end if;
+            -- -- Display G
+            -- elsif unsigned(h_count) >= to_unsigned(x_pos_g, h_count'length) 
+            -- and unsigned(h_count) <= to_unsigned(x_pos_g + BM_SIZE * 3, h_count'length) 
+            -- and unsigned(v_count) >= to_unsigned(y_pos_g, v_count'length) 
+            -- and unsigned(v_count) <= to_unsigned(y_pos_g + BM_SIZE * 5, v_count'length) 
+            -- and game_state = 0
+            -- and temp_video_on = '1' then
+            --
+            --     if G(BM_SIZE - 1 - to_integer(unsigned(v_count) - y_pos_g) / 5)(BM_SIZE - 1 - to_integer(unsigned(h_count) - x_pos_g) / 3) = '1' then
+            --         red <= "1111";
+            --         green <= "1111";
+            --         blue <= "1111";
+            --     else
+            --         red <= "0000";
+            --         green <= "0000";
+            --         blue <= "0000";
+            --     end if;
+            --
+            -- Default to black
+        -- If the game state is playing
+
+        -- Drawing the ball
+            elsif unsigned(h_count) >= to_unsigned(x_pos, h_count'length) and unsigned(h_count) <= to_unsigned(x_pos + size, h_count'length) and
             unsigned(v_count) >= to_unsigned(y_pos, v_count'length) and unsigned(v_count) <= to_unsigned(y_pos + size, v_count'length) and
+            game_state = 1 and
             temp_video_on = '1' then  
                 red <= "0111";
                 green <= "0011";
@@ -529,6 +624,7 @@ begin
             --- Paddle 1
             elsif unsigned(h_count) >= to_unsigned(x_pos_p1, h_count'length) and unsigned(h_count) <= to_unsigned(x_pos_p1 + PADDLE_WIDTH, h_count'length) and
             unsigned(v_count) >= to_unsigned(y_pos_p1, v_count'length) and unsigned(v_count) <= to_unsigned(y_pos_p1 + PADDLE_HEIGHT, v_count'length) and
+            game_state = 1 and
             temp_video_on = '1' then
                 red <= "0000";
                 green <= "0000";
@@ -536,6 +632,7 @@ begin
             --- Paddle 2
             elsif unsigned(h_count) >= to_unsigned(x_pos_p2, h_count'length) and unsigned(h_count) <= to_unsigned(x_pos_p2 + PADDLE_WIDTH, h_count'length) and
             unsigned(v_count) >= to_unsigned(y_pos_p2, v_count'length) and unsigned(v_count) <= to_unsigned(y_pos_p2 + PADDLE_HEIGHT, v_count'length) and
+            game_state = 1 and
             temp_video_on = '1' then
                 red <= "1111";
                 green <= "0000";
@@ -545,6 +642,7 @@ begin
             and unsigned(h_count) <= to_unsigned(x_pos_p1_score + BM_SIZE * 3, h_count'length) 
             and unsigned(v_count) >= to_unsigned(y_pos_p1_score, v_count'length) 
             and unsigned(v_count) <= to_unsigned(y_pos_p1_score + BM_SIZE * 5, v_count'length) 
+            and game_state = 1
             and temp_video_on = '1' then
                 -- Convert the y_pos_p1_score and x_pos_p1_score to unsigned to perform the subtraction
             --- Drawing score for P1
@@ -567,6 +665,7 @@ begin
             and unsigned(h_count) <= to_unsigned(x_pos_p2_score + BM_SIZE * 3, h_count'length)
             and unsigned(v_count) >= to_unsigned(y_pos_p2_score, v_count'length)
             and unsigned(v_count) <= to_unsigned(y_pos_p2_score + BM_SIZE * 5, v_count'length)
+            and game_state = 1
             and temp_video_on = '1' then
                 if score_to_bitmap(P2_score)(BM_SIZE - 1 - to_integer(unsigned(v_count) - y_pos_p2_score) / 5)(BM_SIZE - 1 - to_integer(unsigned(h_count) - x_pos_p2_score) / 3) = '1' then
                     red <= "1111";
@@ -577,14 +676,15 @@ begin
                     green <= "0000";
                     blue <= "0000";
                 end if;
-
+            -- Else Conditions
             else
                 red <= "0000";
                 green <= "0000";
                 blue <= "0000";
-			end if;
-		end if;
-	end process draw;
+            end if;
+        end if;
+
+end process draw;
 
 	-- VGA MAIN ENDS
 	h_sync <= temp_h_sync;

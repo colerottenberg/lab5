@@ -1,5 +1,5 @@
 Analysis & Synthesis report for pong
-Sun Apr 21 20:37:34 2024
+Sun Apr 21 22:38:49 2024
 Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 
 
@@ -19,19 +19,21 @@ Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
  11. Multiplexer Restructuring Statistics (Restructuring Performed)
  12. Parameter Settings for User Entity Instance: vga:U_VGA|clk_div:clk_div
  13. Parameter Settings for User Entity Instance: clk_div:U_CLK_DIV
- 14. Parameter Settings for Inferred Entity Instance: vga:U_VGA|lpm_divide:Div2
- 15. Parameter Settings for Inferred Entity Instance: vga:U_VGA|lpm_divide:Div1
- 16. Parameter Settings for Inferred Entity Instance: vga:U_VGA|lpm_divide:Div0
- 17. Port Connectivity Checks: "decoder7seg:U_LED0"
- 18. Port Connectivity Checks: "decoder7seg:U_LED1"
- 19. Port Connectivity Checks: "decoder7seg:U_LED2"
- 20. Port Connectivity Checks: "decoder7seg:U_LED3"
- 21. Port Connectivity Checks: "decoder7seg:U_LED4"
- 22. Port Connectivity Checks: "decoder7seg:U_LED5"
- 23. Port Connectivity Checks: "vga:U_VGA"
- 24. Post-Synthesis Netlist Statistics for Top Partition
- 25. Elapsed Time Per Partition
- 26. Analysis & Synthesis Messages
+ 14. Parameter Settings for Inferred Entity Instance: vga:U_VGA|lpm_divide:Div4
+ 15. Parameter Settings for Inferred Entity Instance: vga:U_VGA|lpm_divide:Div3
+ 16. Parameter Settings for Inferred Entity Instance: vga:U_VGA|lpm_divide:Div2
+ 17. Parameter Settings for Inferred Entity Instance: vga:U_VGA|lpm_divide:Div1
+ 18. Parameter Settings for Inferred Entity Instance: vga:U_VGA|lpm_divide:Div0
+ 19. Port Connectivity Checks: "decoder7seg:U_LED0"
+ 20. Port Connectivity Checks: "decoder7seg:U_LED1"
+ 21. Port Connectivity Checks: "decoder7seg:U_LED2"
+ 22. Port Connectivity Checks: "decoder7seg:U_LED3"
+ 23. Port Connectivity Checks: "decoder7seg:U_LED4"
+ 24. Port Connectivity Checks: "decoder7seg:U_LED5"
+ 25. Port Connectivity Checks: "vga:U_VGA"
+ 26. Post-Synthesis Netlist Statistics for Top Partition
+ 27. Elapsed Time Per Partition
+ 28. Analysis & Synthesis Messages
 
 
 
@@ -58,15 +60,15 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Apr 21 20:37:34 2024          ;
+; Analysis & Synthesis Status        ; Successful - Sun Apr 21 22:38:49 2024          ;
 ; Quartus Prime Version              ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
 ; Revision Name                      ; pong                                           ;
 ; Top-level Entity Name              ; top_level                                      ;
 ; Family                             ; MAX 10                                         ;
-; Total logic elements               ; 1,449                                          ;
-;     Total combinational functions  ; 1,443                                          ;
-;     Dedicated logic registers      ; 305                                            ;
-; Total registers                    ; 305                                            ;
+; Total logic elements               ; 1,618                                          ;
+;     Total combinational functions  ; 1,612                                          ;
+;     Dedicated logic registers      ; 307                                            ;
+; Total registers                    ; 307                                            ;
 ; Total pins                         ; 75                                             ;
 ; Total virtual pins                 ; 0                                              ;
 ; Total memory bits                  ; 0                                              ;
@@ -218,20 +220,20 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+------------------------------------+
 ; Resource                                    ; Usage                              ;
 +---------------------------------------------+------------------------------------+
-; Estimated Total logic elements              ; 1,449                              ;
+; Estimated Total logic elements              ; 1,618                              ;
 ;                                             ;                                    ;
-; Total combinational functions               ; 1443                               ;
+; Total combinational functions               ; 1612                               ;
 ; Logic element usage by number of LUT inputs ;                                    ;
-;     -- 4 input functions                    ; 253                                ;
-;     -- 3 input functions                    ; 541                                ;
-;     -- <=2 input functions                  ; 649                                ;
+;     -- 4 input functions                    ; 296                                ;
+;     -- 3 input functions                    ; 577                                ;
+;     -- <=2 input functions                  ; 739                                ;
 ;                                             ;                                    ;
 ; Logic elements by mode                      ;                                    ;
-;     -- normal mode                          ; 709                                ;
-;     -- arithmetic mode                      ; 734                                ;
+;     -- normal mode                          ; 819                                ;
+;     -- arithmetic mode                      ; 793                                ;
 ;                                             ;                                    ;
-; Total registers                             ; 305                                ;
-;     -- Dedicated logic registers            ; 305                                ;
+; Total registers                             ; 307                                ;
+;     -- Dedicated logic registers            ; 307                                ;
 ;     -- I/O registers                        ; 0                                  ;
 ;                                             ;                                    ;
 ; I/O pins                                    ; 75                                 ;
@@ -239,9 +241,9 @@ https://fpgasoftware.intel.com/eula.
 ; Embedded Multiplier 9-bit elements          ; 0                                  ;
 ;                                             ;                                    ;
 ; Maximum fan-out node                        ; vga:U_VGA|clk_div:clk_div|temp_clk ;
-; Maximum fan-out                             ; 251                                ;
-; Total fan-out                               ; 4779                               ;
-; Average fan-out                             ; 2.52                               ;
+; Maximum fan-out                             ; 253                                ;
+; Total fan-out                               ; 5187                               ;
+; Average fan-out                             ; 2.51                               ;
 +---------------------------------------------+------------------------------------+
 
 
@@ -250,51 +252,59 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+----------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 ; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                                                  ; Entity Name         ; Library Name ;
 +-------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+----------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
-; |top_level                                ; 1443 (0)            ; 305 (0)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 75   ; 0            ; 0          ; |top_level                                                                                                           ; top_level           ; work         ;
+; |top_level                                ; 1612 (0)            ; 307 (0)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 75   ; 0            ; 0          ; |top_level                                                                                                           ; top_level           ; work         ;
 ;    |clk_div:U_CLK_DIV|                    ; 1 (1)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|clk_div:U_CLK_DIV                                                                                         ; clk_div             ; work         ;
-;    |vga:U_VGA|                            ; 1442 (1155)         ; 304 (262)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA                                                                                                 ; vga                 ; work         ;
+;    |vga:U_VGA|                            ; 1611 (1205)         ; 306 (264)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA                                                                                                 ; vga                 ; work         ;
 ;       |clk_div:clk_div|                   ; 36 (36)             ; 22 (22)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|clk_div:clk_div                                                                                 ; clk_div             ; work         ;
 ;       |lpm_divide:Div0|                   ; 60 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|lpm_divide:Div0                                                                                 ; lpm_divide          ; work         ;
 ;          |lpm_divide_gtl:auto_generated|  ; 60 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|lpm_divide:Div0|lpm_divide_gtl:auto_generated                                                   ; lpm_divide_gtl      ; work         ;
 ;             |sign_div_unsign_ilh:divider| ; 60 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|lpm_divide:Div0|lpm_divide_gtl:auto_generated|sign_div_unsign_ilh:divider                       ; sign_div_unsign_ilh ; work         ;
 ;                |alt_u_div_ehe:divider|    ; 60 (60)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|lpm_divide:Div0|lpm_divide_gtl:auto_generated|sign_div_unsign_ilh:divider|alt_u_div_ehe:divider ; alt_u_div_ehe       ; work         ;
-;       |lpm_divide:Div1|                   ; 81 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|lpm_divide:Div1                                                                                 ; lpm_divide          ; work         ;
-;          |lpm_divide_htl:auto_generated|  ; 81 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|lpm_divide:Div1|lpm_divide_htl:auto_generated                                                   ; lpm_divide_htl      ; work         ;
-;             |sign_div_unsign_jlh:divider| ; 81 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|lpm_divide:Div1|lpm_divide_htl:auto_generated|sign_div_unsign_jlh:divider                       ; sign_div_unsign_jlh ; work         ;
-;                |alt_u_div_ghe:divider|    ; 81 (81)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|lpm_divide:Div1|lpm_divide_htl:auto_generated|sign_div_unsign_jlh:divider|alt_u_div_ghe:divider ; alt_u_div_ghe       ; work         ;
+;       |lpm_divide:Div1|                   ; 60 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|lpm_divide:Div1                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_gtl:auto_generated|  ; 60 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|lpm_divide:Div1|lpm_divide_gtl:auto_generated                                                   ; lpm_divide_gtl      ; work         ;
+;             |sign_div_unsign_ilh:divider| ; 60 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|lpm_divide:Div1|lpm_divide_gtl:auto_generated|sign_div_unsign_ilh:divider                       ; sign_div_unsign_ilh ; work         ;
+;                |alt_u_div_ehe:divider|    ; 60 (60)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|lpm_divide:Div1|lpm_divide_gtl:auto_generated|sign_div_unsign_ilh:divider|alt_u_div_ehe:divider ; alt_u_div_ehe       ; work         ;
 ;       |lpm_divide:Div2|                   ; 60 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|lpm_divide:Div2                                                                                 ; lpm_divide          ; work         ;
 ;          |lpm_divide_gtl:auto_generated|  ; 60 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|lpm_divide:Div2|lpm_divide_gtl:auto_generated                                                   ; lpm_divide_gtl      ; work         ;
 ;             |sign_div_unsign_ilh:divider| ; 60 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|lpm_divide:Div2|lpm_divide_gtl:auto_generated|sign_div_unsign_ilh:divider                       ; sign_div_unsign_ilh ; work         ;
 ;                |alt_u_div_ehe:divider|    ; 60 (60)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|lpm_divide:Div2|lpm_divide_gtl:auto_generated|sign_div_unsign_ilh:divider|alt_u_div_ehe:divider ; alt_u_div_ehe       ; work         ;
-;       |vga_sync_gen:sync|                 ; 50 (50)             ; 20 (20)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|vga_sync_gen:sync                                                                               ; vga_sync_gen        ; work         ;
+;       |lpm_divide:Div3|                   ; 81 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|lpm_divide:Div3                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_htl:auto_generated|  ; 81 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|lpm_divide:Div3|lpm_divide_htl:auto_generated                                                   ; lpm_divide_htl      ; work         ;
+;             |sign_div_unsign_jlh:divider| ; 81 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|lpm_divide:Div3|lpm_divide_htl:auto_generated|sign_div_unsign_jlh:divider                       ; sign_div_unsign_jlh ; work         ;
+;                |alt_u_div_ghe:divider|    ; 81 (81)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|lpm_divide:Div3|lpm_divide_htl:auto_generated|sign_div_unsign_jlh:divider|alt_u_div_ghe:divider ; alt_u_div_ghe       ; work         ;
+;       |lpm_divide:Div4|                   ; 60 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|lpm_divide:Div4                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_gtl:auto_generated|  ; 60 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|lpm_divide:Div4|lpm_divide_gtl:auto_generated                                                   ; lpm_divide_gtl      ; work         ;
+;             |sign_div_unsign_ilh:divider| ; 60 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|lpm_divide:Div4|lpm_divide_gtl:auto_generated|sign_div_unsign_ilh:divider                       ; sign_div_unsign_ilh ; work         ;
+;                |alt_u_div_ehe:divider|    ; 60 (60)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|lpm_divide:Div4|lpm_divide_gtl:auto_generated|sign_div_unsign_ilh:divider|alt_u_div_ehe:divider ; alt_u_div_ehe       ; work         ;
+;       |vga_sync_gen:sync|                 ; 49 (49)             ; 20 (20)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|vga:U_VGA|vga_sync_gen:sync                                                                               ; vga_sync_gen        ; work         ;
 +-------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+----------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+---------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                              ;
-+----------------------------------------+----------------------------------------+
-; Register name                          ; Reason for Removal                     ;
-+----------------------------------------+----------------------------------------+
-; vga:U_VGA|y_pos_p1[0]                  ; Stuck at GND due to stuck port data_in ;
-; vga:U_VGA|x_pos_p1[1..31]              ; Stuck at GND due to stuck port data_in ;
-; vga:U_VGA|y_pos_p2[0]                  ; Stuck at GND due to stuck port data_in ;
-; vga:U_VGA|x_pos_p2[29..31]             ; Stuck at GND due to stuck port data_in ;
-; vga:U_VGA|x_pos_p1[0]                  ; Stuck at GND due to stuck port data_in ;
-; vga:U_VGA|x_pos_p2[10..28]             ; Stuck at GND due to stuck port data_in ;
-; vga:U_VGA|x_pos_p2[9]                  ; Stuck at VCC due to stuck port data_in ;
-; vga:U_VGA|x_pos_p2[7,8]                ; Stuck at GND due to stuck port data_in ;
-; vga:U_VGA|x_pos_p2[4..6]               ; Stuck at VCC due to stuck port data_in ;
-; vga:U_VGA|x_pos_p2[3]                  ; Stuck at GND due to stuck port data_in ;
-; vga:U_VGA|x_pos_p2[2]                  ; Stuck at VCC due to stuck port data_in ;
-; vga:U_VGA|x_pos_p2[0,1]                ; Stuck at GND due to stuck port data_in ;
-; clk_div:U_CLK_DIV|counter              ; Stuck at GND due to stuck port data_in ;
-; vga:U_VGA|y_pos[0]                     ; Merged with vga:U_VGA|x_pos[0]         ;
-; vga:U_VGA|x_pos[0]                     ; Stuck at GND due to stuck port data_in ;
-; vga:U_VGA|mov_x[31]                    ; Lost fanout                            ;
-; vga:U_VGA|mov_y[31]                    ; Lost fanout                            ;
-; Total Number of Removed Registers = 71 ;                                        ;
-+----------------------------------------+----------------------------------------+
++----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                               ;
++-----------------------------------------+----------------------------------------+
+; Register name                           ; Reason for Removal                     ;
++-----------------------------------------+----------------------------------------+
+; vga:U_VGA|y_pos_p1[0]                   ; Stuck at GND due to stuck port data_in ;
+; vga:U_VGA|x_pos_p1[0..31]               ; Stuck at GND due to stuck port data_in ;
+; vga:U_VGA|y_pos_p2[0]                   ; Stuck at GND due to stuck port data_in ;
+; vga:U_VGA|x_pos_p2[10..31]              ; Stuck at GND due to stuck port data_in ;
+; vga:U_VGA|x_pos_p2[9]                   ; Stuck at VCC due to stuck port data_in ;
+; vga:U_VGA|x_pos_p2[7,8]                 ; Stuck at GND due to stuck port data_in ;
+; vga:U_VGA|x_pos_p2[4..6]                ; Stuck at VCC due to stuck port data_in ;
+; vga:U_VGA|x_pos_p2[3]                   ; Stuck at GND due to stuck port data_in ;
+; vga:U_VGA|x_pos_p2[2]                   ; Stuck at VCC due to stuck port data_in ;
+; vga:U_VGA|x_pos_p2[0,1]                 ; Stuck at GND due to stuck port data_in ;
+; clk_div:U_CLK_DIV|counter               ; Stuck at GND due to stuck port data_in ;
+; vga:U_VGA|game_state[2..9,11..31]       ; Merged with vga:U_VGA|game_state[10]   ;
+; vga:U_VGA|y_pos[0]                      ; Merged with vga:U_VGA|x_pos[0]         ;
+; vga:U_VGA|x_pos[0]                      ; Stuck at GND due to stuck port data_in ;
+; vga:U_VGA|game_state[10]                ; Stuck at GND due to stuck port data_in ;
+; vga:U_VGA|mov_x[31]                     ; Lost fanout                            ;
+; vga:U_VGA|mov_y[31]                     ; Lost fanout                            ;
+; Total Number of Removed Registers = 101 ;                                        ;
++-----------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -302,9 +312,9 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 305   ;
-; Number of registers using Synchronous Clear  ; 56    ;
-; Number of registers using Synchronous Load   ; 0     ;
+; Total registers                              ; 307   ;
+; Number of registers using Synchronous Clear  ; 30    ;
+; Number of registers using Synchronous Load   ; 2     ;
 ; Number of registers using Asynchronous Clear ; 23    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 134   ;
@@ -323,30 +333,33 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; vga:U_VGA|y_pos[7]                      ; 6       ;
 ; vga:U_VGA|y_pos[6]                      ; 6       ;
 ; vga:U_VGA|y_pos[3]                      ; 9       ;
-; vga:U_VGA|y_pos_p2[7]                   ; 5       ;
-; vga:U_VGA|y_pos_p2[6]                   ; 5       ;
-; vga:U_VGA|y_pos_p2[3]                   ; 5       ;
 ; vga:U_VGA|y_pos_p1[7]                   ; 5       ;
 ; vga:U_VGA|y_pos_p1[6]                   ; 5       ;
 ; vga:U_VGA|y_pos_p1[3]                   ; 5       ;
+; vga:U_VGA|y_pos_p2[7]                   ; 5       ;
+; vga:U_VGA|y_pos_p2[6]                   ; 5       ;
+; vga:U_VGA|y_pos_p2[3]                   ; 5       ;
 ; vga:U_VGA|mov_x[0]                      ; 2       ;
 ; vga:U_VGA|mov_y[0]                      ; 2       ;
 ; Total number of inverted registers = 14 ;         ;
 +-----------------------------------------+---------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                  ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output        ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------+
-; 3:1                ; 60 bits   ; 120 LEs       ; 60 LEs               ; 60 LEs                 ; Yes        ; |top_level|vga:U_VGA|mov_x[29]    ;
-; 4:1                ; 28 bits   ; 56 LEs        ; 56 LEs               ; 0 LEs                  ; Yes        ; |top_level|vga:U_VGA|y_pos_p2[20] ;
-; 4:1                ; 28 bits   ; 56 LEs        ; 56 LEs               ; 0 LEs                  ; Yes        ; |top_level|vga:U_VGA|y_pos_p1[9]  ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |top_level|vga:U_VGA|mov_y[0]     ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |top_level|vga:U_VGA|y_pos_p2[3]  ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |top_level|vga:U_VGA|y_pos_p1[3]  ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------+
+; 3:1                ; 60 bits   ; 120 LEs       ; 60 LEs               ; 60 LEs                 ; Yes        ; |top_level|vga:U_VGA|mov_y[21]       ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |top_level|vga:U_VGA|red[3]          ;
+; 4:1                ; 28 bits   ; 56 LEs        ; 56 LEs               ; 0 LEs                  ; Yes        ; |top_level|vga:U_VGA|y_pos_p2[19]    ;
+; 4:1                ; 28 bits   ; 56 LEs        ; 56 LEs               ; 0 LEs                  ; Yes        ; |top_level|vga:U_VGA|y_pos_p1[2]     ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |top_level|vga:U_VGA|mov_x[0]        ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |top_level|vga:U_VGA|y_pos_p2[3]     ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |top_level|vga:U_VGA|y_pos_p1[7]     ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |top_level|vga:U_VGA|temp_game_state ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |top_level|vga:U_VGA|green           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------+
 
 
 +------------------------------------------------------------------------+
@@ -368,6 +381,52 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; clk_in_freq    ; 2     ; Signed Integer                        ;
 ; clk_out_freq   ; 1     ; Signed Integer                        ;
 +----------------+-------+---------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: vga:U_VGA|lpm_divide:Div4 ;
++------------------------+----------------+----------------------------------+
+; Parameter Name         ; Value          ; Type                             ;
++------------------------+----------------+----------------------------------+
+; LPM_WIDTHN             ; 10             ; Untyped                          ;
+; LPM_WIDTHD             ; 2              ; Untyped                          ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                          ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                          ;
+; LPM_PIPELINE           ; 0              ; Untyped                          ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                          ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                          ;
+; CBXI_PARAMETER         ; lpm_divide_gtl ; Untyped                          ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                          ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                          ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                       ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                     ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                     ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                   ;
++------------------------+----------------+----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: vga:U_VGA|lpm_divide:Div3 ;
++------------------------+----------------+----------------------------------+
+; Parameter Name         ; Value          ; Type                             ;
++------------------------+----------------+----------------------------------+
+; LPM_WIDTHN             ; 10             ; Untyped                          ;
+; LPM_WIDTHD             ; 3              ; Untyped                          ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                          ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                          ;
+; LPM_PIPELINE           ; 0              ; Untyped                          ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                          ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                          ;
+; CBXI_PARAMETER         ; lpm_divide_htl ; Untyped                          ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                          ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                          ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                       ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                     ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                     ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                   ;
++------------------------+----------------+----------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -400,13 +459,13 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Parameter Name         ; Value          ; Type                             ;
 +------------------------+----------------+----------------------------------+
 ; LPM_WIDTHN             ; 10             ; Untyped                          ;
-; LPM_WIDTHD             ; 3              ; Untyped                          ;
+; LPM_WIDTHD             ; 2              ; Untyped                          ;
 ; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                          ;
 ; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                          ;
 ; LPM_PIPELINE           ; 0              ; Untyped                          ;
 ; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                          ;
 ; MAXIMIZE_SPEED         ; 5              ; Untyped                          ;
-; CBXI_PARAMETER         ; lpm_divide_htl ; Untyped                          ;
+; CBXI_PARAMETER         ; lpm_divide_gtl ; Untyped                          ;
 ; CARRY_CHAIN            ; MANUAL         ; Untyped                          ;
 ; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                          ;
 ; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                       ;
@@ -499,7 +558,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port     ; Type   ; Severity ; Details                                                                             ;
 +----------+--------+----------+-------------------------------------------------------------------------------------+
-; en       ; Input  ; Info     ; Stuck at VCC                                                                        ;
 ; img_pos  ; Input  ; Info     ; Stuck at GND                                                                        ;
 ; video_on ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +----------+--------+----------+-------------------------------------------------------------------------------------+
@@ -511,24 +569,26 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 75                          ;
-; cycloneiii_ff         ; 305                         ;
+; cycloneiii_ff         ; 307                         ;
 ;     CLR               ; 23                          ;
-;     ENA               ; 78                          ;
-;     ENA SCLR          ; 56                          ;
-;     plain             ; 148                         ;
-; cycloneiii_lcell_comb ; 1445                        ;
-;     arith             ; 734                         ;
-;         2 data inputs ; 379                         ;
-;         3 data inputs ; 355                         ;
-;     normal            ; 711                         ;
-;         0 data inputs ; 26                          ;
-;         1 data inputs ; 18                          ;
-;         2 data inputs ; 228                         ;
-;         3 data inputs ; 186                         ;
-;         4 data inputs ; 253                         ;
+;     ENA               ; 106                         ;
+;     ENA SCLR          ; 28                          ;
+;     SCLR              ; 2                           ;
+;     SLD               ; 2                           ;
+;     plain             ; 146                         ;
+; cycloneiii_lcell_comb ; 1614                        ;
+;     arith             ; 793                         ;
+;         2 data inputs ; 408                         ;
+;         3 data inputs ; 385                         ;
+;     normal            ; 821                         ;
+;         0 data inputs ; 42                          ;
+;         1 data inputs ; 20                          ;
+;         2 data inputs ; 271                         ;
+;         3 data inputs ; 192                         ;
+;         4 data inputs ; 296                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 27.30                       ;
-; Average LUT depth     ; 12.45                       ;
+; Max LUT depth         ; 28.30                       ;
+; Average LUT depth     ; 13.37                       ;
 +-----------------------+-----------------------------+
 
 
@@ -547,7 +607,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
-    Info: Processing started: Sun Apr 21 20:37:29 2024
+    Info: Processing started: Sun Apr 21 22:38:44 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off pong -c pong
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -577,29 +637,36 @@ Info (12021): Found 2 design units, including 1 entities, in source file top_lev
 Info (12021): Found 1 design units, including 1 entities, in source file DE10_LITE_Golden_Top.v
     Info (12023): Found entity 1: DE10_LITE_Golden_Top File: /home/crott/Documents/spring24/dd/lab5/pong/DE10_LITE_Golden_Top.v Line: 29
 Info (12127): Elaborating entity "top_level" for the top level hierarchy
-Info (12128): Elaborating entity "vga" for hierarchy "vga:U_VGA" File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 53
-Warning (10540): VHDL Signal Declaration warning at vga.vhd(221): used explicit default value for signal "x_pos_p1_score" because signal was never assigned a value File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 221
-Warning (10540): VHDL Signal Declaration warning at vga.vhd(222): used explicit default value for signal "y_pos_p1_score" because signal was never assigned a value File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 222
-Warning (10540): VHDL Signal Declaration warning at vga.vhd(225): used explicit default value for signal "x_pos_p2_score" because signal was never assigned a value File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 225
-Warning (10540): VHDL Signal Declaration warning at vga.vhd(226): used explicit default value for signal "y_pos_p2_score" because signal was never assigned a value File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 226
-Warning (10492): VHDL Process Statement warning at vga.vhd(265): signal "mov_x" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 265
-Warning (10492): VHDL Process Statement warning at vga.vhd(266): signal "mov_y" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 266
-Warning (10492): VHDL Process Statement warning at vga.vhd(267): signal "x_pos" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 267
-Warning (10492): VHDL Process Statement warning at vga.vhd(268): signal "y_pos" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 268
-Warning (10492): VHDL Process Statement warning at vga.vhd(325): signal "y_pos_p1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 325
-Warning (10492): VHDL Process Statement warning at vga.vhd(326): signal "x_pos_p1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 326
-Warning (10492): VHDL Process Statement warning at vga.vhd(350): signal "y_pos_p2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 350
-Warning (10492): VHDL Process Statement warning at vga.vhd(351): signal "x_pos_p2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 351
-Info (12128): Elaborating entity "clk_div" for hierarchy "vga:U_VGA|clk_div:clk_div" File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 230
-Info (12128): Elaborating entity "vga_sync_gen" for hierarchy "vga:U_VGA|vga_sync_gen:sync" File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 242
-Info (12128): Elaborating entity "clk_div" for hierarchy "clk_div:U_CLK_DIV" File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 67
-Info (12128): Elaborating entity "decoder7seg" for hierarchy "decoder7seg:U_LED5" File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 77
-Info (278001): Inferred 3 megafunctions from design logic
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "vga:U_VGA|Div2" File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 422
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "vga:U_VGA|Div1" File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 422
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "vga:U_VGA|Div0" File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 406
-Info (12130): Elaborated megafunction instantiation "vga:U_VGA|lpm_divide:Div2" File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 422
-Info (12133): Instantiated megafunction "vga:U_VGA|lpm_divide:Div2" with the following parameter: File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 422
+Info (12128): Elaborating entity "vga" for hierarchy "vga:U_VGA" File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 55
+Warning (10540): VHDL Signal Declaration warning at vga.vhd(278): used explicit default value for signal "x_pos_p1_score" because signal was never assigned a value File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 278
+Warning (10540): VHDL Signal Declaration warning at vga.vhd(279): used explicit default value for signal "y_pos_p1_score" because signal was never assigned a value File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 279
+Warning (10540): VHDL Signal Declaration warning at vga.vhd(282): used explicit default value for signal "x_pos_p2_score" because signal was never assigned a value File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 282
+Warning (10540): VHDL Signal Declaration warning at vga.vhd(283): used explicit default value for signal "y_pos_p2_score" because signal was never assigned a value File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 283
+Warning (10540): VHDL Signal Declaration warning at vga.vhd(287): used explicit default value for signal "x_pos_p" because signal was never assigned a value File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 287
+Warning (10540): VHDL Signal Declaration warning at vga.vhd(288): used explicit default value for signal "y_pos_p" because signal was never assigned a value File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 288
+Warning (10540): VHDL Signal Declaration warning at vga.vhd(291): used explicit default value for signal "x_pos_o" because signal was never assigned a value File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 291
+Warning (10540): VHDL Signal Declaration warning at vga.vhd(292): used explicit default value for signal "y_pos_o" because signal was never assigned a value File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 292
+Warning (10492): VHDL Process Statement warning at vga.vhd(396): signal "game_state" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 396
+Warning (10492): VHDL Process Statement warning at vga.vhd(437): signal "mov_x" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 437
+Warning (10492): VHDL Process Statement warning at vga.vhd(438): signal "mov_y" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 438
+Warning (10492): VHDL Process Statement warning at vga.vhd(439): signal "x_pos" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 439
+Warning (10492): VHDL Process Statement warning at vga.vhd(440): signal "y_pos" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 440
+Warning (10492): VHDL Process Statement warning at vga.vhd(497): signal "y_pos_p1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 497
+Warning (10492): VHDL Process Statement warning at vga.vhd(498): signal "x_pos_p1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 498
+Warning (10492): VHDL Process Statement warning at vga.vhd(522): signal "y_pos_p2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 522
+Warning (10492): VHDL Process Statement warning at vga.vhd(523): signal "x_pos_p2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 523
+Info (12128): Elaborating entity "clk_div" for hierarchy "vga:U_VGA|clk_div:clk_div" File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 370
+Info (12128): Elaborating entity "vga_sync_gen" for hierarchy "vga:U_VGA|vga_sync_gen:sync" File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 382
+Info (12128): Elaborating entity "clk_div" for hierarchy "clk_div:U_CLK_DIV" File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 69
+Info (12128): Elaborating entity "decoder7seg" for hierarchy "decoder7seg:U_LED5" File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 79
+Info (278001): Inferred 5 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "vga:U_VGA|Div4" File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 670
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "vga:U_VGA|Div3" File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 670
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "vga:U_VGA|Div2" File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 653
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "vga:U_VGA|Div1" File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 567
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "vga:U_VGA|Div0" File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 553
+Info (12130): Elaborated megafunction instantiation "vga:U_VGA|lpm_divide:Div4" File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 670
+Info (12133): Instantiated megafunction "vga:U_VGA|lpm_divide:Div4" with the following parameter: File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 670
     Info (12134): Parameter "LPM_WIDTHN" = "10"
     Info (12134): Parameter "LPM_WIDTHD" = "2"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
@@ -614,8 +681,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/add_
     Info (12023): Found entity 1: add_sub_t3c File: /home/crott/Documents/spring24/dd/lab5/pong/db/add_sub_t3c.tdf Line: 23
 Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_u3c.tdf
     Info (12023): Found entity 1: add_sub_u3c File: /home/crott/Documents/spring24/dd/lab5/pong/db/add_sub_u3c.tdf Line: 23
-Info (12130): Elaborated megafunction instantiation "vga:U_VGA|lpm_divide:Div1" File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 422
-Info (12133): Instantiated megafunction "vga:U_VGA|lpm_divide:Div1" with the following parameter: File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 422
+Info (12130): Elaborated megafunction instantiation "vga:U_VGA|lpm_divide:Div3" File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 670
+Info (12133): Instantiated megafunction "vga:U_VGA|lpm_divide:Div3" with the following parameter: File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 670
     Info (12134): Parameter "LPM_WIDTHN" = "10"
     Info (12134): Parameter "LPM_WIDTHD" = "3"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
@@ -626,6 +693,12 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/sign
     Info (12023): Found entity 1: sign_div_unsign_jlh File: /home/crott/Documents/spring24/dd/lab5/pong/db/sign_div_unsign_jlh.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_ghe.tdf
     Info (12023): Found entity 1: alt_u_div_ghe File: /home/crott/Documents/spring24/dd/lab5/pong/db/alt_u_div_ghe.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "vga:U_VGA|lpm_divide:Div1" File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 567
+Info (12133): Instantiated megafunction "vga:U_VGA|lpm_divide:Div1" with the following parameter: File: /home/crott/Documents/spring24/dd/lab5/pong/vga.vhd Line: 567
+    Info (12134): Parameter "LPM_WIDTHN" = "10"
+    Info (12134): Parameter "LPM_WIDTHD" = "2"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "led0[0]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 28
     Warning (13410): Pin "led0[1]" is stuck at GND File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 28
@@ -679,21 +752,20 @@ Info (286030): Timing-Driven Synthesis is running
 Info (17049): 2 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 7 input pin(s) that do not drive logic
+Warning (21074): Design contains 6 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "switch[4]" File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 24
     Warning (15610): No output dependent on input pin "switch[5]" File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 24
     Warning (15610): No output dependent on input pin "switch[6]" File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 24
     Warning (15610): No output dependent on input pin "switch[7]" File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 24
     Warning (15610): No output dependent on input pin "switch[8]" File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 24
     Warning (15610): No output dependent on input pin "switch[9]" File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 24
-    Warning (15610): No output dependent on input pin "button_n[1]" File: /home/crott/Documents/spring24/dd/lab5/pong/top_level.vhd Line: 25
-Info (21057): Implemented 1528 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1697 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 13 input pins
     Info (21059): Implemented 62 output pins
-    Info (21061): Implemented 1453 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 70 warnings
-    Info: Peak virtual memory: 523 megabytes
-    Info: Processing ended: Sun Apr 21 20:37:34 2024
+    Info (21061): Implemented 1622 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 74 warnings
+    Info: Peak virtual memory: 520 megabytes
+    Info: Processing ended: Sun Apr 21 22:38:49 2024
     Info: Elapsed time: 00:00:05
     Info: Total CPU time (on all processors): 00:00:12
 

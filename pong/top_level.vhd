@@ -44,17 +44,19 @@ architecture STR of top_level is
 
     constant C0    : std_logic_vector(3 downto 0) := (others => '0');
     signal rst     : std_logic;
+    signal en      : std_logic;
     signal vga_clk : std_logic;
 
 begin  -- STR
 
     rst <= not button_n(0);
+    en <= not button_n(1);
 
     U_VGA : entity work.vga port map (
 		  --vga_clk = 25MHz clk
         clk     => vga_clk,
         rst     => rst,
-        en      => '1',
+        en      => en,
         switch  => switch,
         red     => red,
         green   => green,
