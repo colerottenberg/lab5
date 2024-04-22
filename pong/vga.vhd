@@ -215,6 +215,39 @@ architecture default_arch of vga is
         end case;
     end score_to_bitmap;
 
+    -- Adding the PONG Letters
+    constant P : bitmap := (
+        "11111",
+        "10001",
+        "10001",
+        "11111",
+        "10000"
+    );
+
+    constant O : bitmap := (
+        "11111",
+        "10001",
+        "10001",
+        "10001",
+        "11111"
+    );
+
+    constant N : bitmap := (
+        "10001",
+        "11001",
+        "10101",
+        "10011",
+        "10001"
+    );
+
+    constant G : bitmap := (
+        "11111",
+        "10000",
+        "10011",
+        "10001",
+        "11111"
+    );
+
     -- Position of the bitmap
 
     -- Position of the P1 score
@@ -224,6 +257,89 @@ architecture default_arch of vga is
     -- Position of the P2 score
     signal x_pos_p2_score : integer := 500;
     signal y_pos_p2_score : integer := 100;
+
+    -- Position of the PONG letters
+    -- Letter P
+    signal x_pos_p : integer := 300;
+    signal y_pos_p : integer := 100;
+
+    -- Letter O
+    signal x_pos_o : integer := 350;
+    signal y_pos_o : integer := 100;
+
+    -- Letter N
+    signal x_pos_n : integer := 400;
+    signal y_pos_n : integer := 100;
+
+    -- Letter G
+    signal x_pos_g : integer := 450;
+    signal y_pos_g : integer := 100;
+
+    -- Adding Letters for Wins 
+    -- Position of the P1 win
+    signal x_pos_p1_win : integer := 100;
+    signal y_pos_p1_win : integer := 200;
+
+    -- Position of the P2 win
+    signal x_pos_p2_win : integer := 500;
+    signal y_pos_p2_win : integer := 200;
+
+    -- Position of the WIN letters
+    -- Letter W
+    signal x_pos_w : integer := 300;
+    signal y_pos_w : integer := 200;
+
+    -- Letter I
+    signal x_pos_i : integer := 350;
+    signal y_pos_i : integer := 200;
+
+    -- Letter N
+    signal x_pos_n_win : integer := 400;
+    signal y_pos_n_win : integer := 200;
+
+    -- Letter S
+    signal x_pos_s : integer := 450;
+    signal y_pos_s : integer := 200;
+
+    -- Position of the START letters
+    -- Letter S
+    signal x_pos_s_start : integer := 300;
+    signal y_pos_s_start : integer := 300;
+
+    -- Letter T
+    signal x_pos_t : integer := 350;
+    signal y_pos_t : integer := 300;
+
+    -- Letter A
+    signal x_pos_a : integer := 400;
+    signal y_pos_a : integer := 300;
+
+    -- Letter R
+    signal x_pos_r : integer := 450;
+    signal y_pos_r : integer := 300;
+
+    -- Letter T
+    signal x_pos_t_start : integer := 500;
+    signal y_pos_t_start : integer := 300;
+
+    -- Letter S
+    signal x_pos_s_start2 : integer := 550;
+    signal y_pos_s_start2 : integer := 300;
+
+    -- Defining Game States
+    -- 0: Start
+    -- 1: Playing
+    -- 2: P1 Wins
+    -- 3: P2 Wins
+
+    signal game_state : integer := 0; -- Initial state is start
+    -- In the start state the words PONG are displayed
+    -- Whenever the player presses the start button, the game state changes to playing
+    -- If the player presses the rst button, the game state changes to start
+    -- If the player wins, the game state changes to the respective win state
+
+    -- VGA MAIN BEGINS
+
 
 begin 		
 	-- Slow Clock Divider splits the 50MHz clock into 1Hz
@@ -248,6 +364,39 @@ begin
 					v_sync => temp_v_sync,
 					video_on => temp_video_on);
    -- VGA_SYNC_GEN ENDS	
+
+    -- State Machine for the game
+    game_state_machine: process(slow_clk, rst)
+        variable temp_game_state: integer;
+    begin
+        temp_game_state := game_state;
+        if rising_edge(slow_clk) then
+            if rst = '1' then
+                game_state <= 0;
+                -- Reset the scores
+                P1_score <= 0;
+                P2_score <= 0;
+                -- Reset the ball position
+                x_pos <= 200;
+                y_pos <= 200;
+            else
+                case game_state is
+                    when 0 =>
+                        if en = '1' then
+                            temp_game_state := 1;
+                        end if;
+                    when 1 =>
+                        if P1_score = 10 then
+                            temp_game_state := 2;
+                        elsif P2_score = 10 then
+                            temp_game_state := 3;
+                        end if;
+                    when others =>
+                        temp_game_state := 0;
+                end case;
+                game_state <= temp_game_state;
+            end if;
+        end if;
 
    -- The ball movement process
     -- The ball will move in the x and y directions
