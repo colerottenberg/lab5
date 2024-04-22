@@ -413,6 +413,22 @@ begin
                     blue <= "0000";
                 end if;
 
+            -- Drawing score for P2
+            elsif unsigned(h_count) >= to_unsigned(x_pos_p2_score, h_count'length)
+            and unsigned(h_count) <= to_unsigned(x_pos_p2_score + BM_SIZE * 3, h_count'length)
+            and unsigned(v_count) >= to_unsigned(y_pos_p2_score, v_count'length)
+            and unsigned(v_count) <= to_unsigned(y_pos_p2_score + BM_SIZE * 5, v_count'length)
+            and temp_video_on = '1' then
+                if score_to_bitmap(P2_score)(BM_SIZE - 1 - to_integer(unsigned(v_count) - y_pos_p2_score) / 5)(BM_SIZE - 1 - to_integer(unsigned(h_count) - x_pos_p2_score) / 3) = '1' then
+                    red <= "1111";
+                    green <= "1111";
+                    blue <= "1111";
+                else
+                    red <= "0000";
+                    green <= "0000";
+                    blue <= "0000";
+                end if;
+
             else
                 red <= "0000";
                 green <= "0000";
